@@ -1,0 +1,15 @@
+<form class="profile-form-container" (ngSubmit)="onSubmit()" #editProfileForm="ngForm" enctype="multipart/form-data">
+  <div class="profile-image-container">
+    <img class="profile-image" src="https://i.pinimg.com/originals/b6/8f/39/b68f39f4821a97d11a152e42fdcf8808.jpg">  
+    <input type="file">
+  </div>
+  <div class="profile-information-container">
+    <label for="username">Username:</label>
+    <input type="text" name="username" id="username" class="profile-username" [(ngModel)]="model.username">
+    <label for="birth-date">Date of birth:</label>
+    <input type="date" name="dateOfBirth" [(ngModel)]="model.dateOfBirth" class="profile-birth-date">
+    <label for="bio">Tell us something about yourself:</label>
+    <textarea name="bio" id="bio" class="profile-bio" [(ngModel)]="model.bio"></textarea>
+    <button type="submit">Save</button>
+  </div>
+</form>

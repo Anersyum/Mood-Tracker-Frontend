@@ -1,0 +1,25 @@
+.login-form {
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100% - 50px);
+    justify-content: center;
+    align-items: center;
+}   
+
+.login-form .registered-successfully {
+
+    font: 14pt bold;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    color: teal;
+}
+
+.login-form .login-error {
+
+    color: red;
+    font: 14pt bold;
+    margin-top: -10px;
+    margin-bottom: 10px
+}

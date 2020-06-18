@@ -1,0 +1,7 @@
+<form (ngSubmit)="register()" #registerForm="ngForm" class="register-form">
+  <h1>Register</h1>
+  <span *ngIf="this.error" class="register-error">{{ this.error }}</span>
+  <input type="text" required name="username" placeholder="Enter Username" [(ngModel)]="model.username">
+  <input type="password" required name="password" placeholder="Enter Password" [(ngModel)]="model.password">
+  <button type="submit" [disabled]="!registerForm.valid">Register</button>
+</form>

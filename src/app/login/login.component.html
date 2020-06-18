@@ -1,0 +1,8 @@
+<form *ngIf="!isLoggedIn();" #loginForm="ngForm" (ngSubmit)="login()" class="login-form">
+  <h1>Login</h1>
+  <span *ngIf="this.registeredSuccess" class="registered-successfully">Register complete! You can now login with your username and password.</span>
+  <span *ngIf="this.loginError" class="login-error">Username or password is wrong!</span>
+  <input type="text" name="username" placeholder="Enter Username" required [(ngModel)]="model.username" >
+  <input type="password" name="password" placeholder="Enter Password" required [(ngModel)]="model.password">
+  <button [disabled]="!loginForm.valid" type="submit">Login</button>
+</form>

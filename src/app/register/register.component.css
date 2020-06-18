@@ -1,0 +1,17 @@
+.register-form {
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100% - 50px);
+    justify-content: center;
+    align-items: center;
+}   
+
+.register-form .register-error {
+
+    color: red;
+    font: 14pt bold;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}

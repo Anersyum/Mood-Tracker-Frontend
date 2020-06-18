@@ -1,0 +1,36 @@
+<nav class="navigation-bar">
+  <ul class="navigation-links">
+    <li>
+      <a [routerLink]="['/']" class="no-hover">
+        <img src="./../../assets/logo.png" alt="logo" style="width: 40px; height: 40px;">
+      </a>
+    </li>
+    <li *ngIf="isLoggedIn()">
+      <a [routerLink]="['/home']" routerLinkActive="activated">Home</a>
+    </li>
+    <li>
+        <a *ngIf="!isLoggedIn()" [routerLink]="['/login']" routerLinkActive="activated">Login</a>
+    </li>
+    <li *ngIf="!isLoggedIn()">
+      <a [routerLink]="['/register']" routerLinkActive="activated" >Register</a>
+    </li>
+    <li *ngIf="isLoggedIn()">
+      <a [routerLink]="['/statistics']" routerLinkActive="activated" >Statistics</a>
+    </li>
+    <li *ngIf="isLoggedIn()" class="navigation-username">
+      Welcome back {{ getLoggedInUsername() | titlecase }}!
+      <div class="profile-image" (click)="dropdownMenu()">
+        <div [ngClass]="{'dropdown': this.dropdown, 'hidden': !this.dropdown}">
+          <ul>
+            <li>
+              <a [routerLink]="['/profile']">Profile</a>
+            </li>
+            <li>
+              <a *ngIf="isLoggedIn()" (click)="logout()">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </li>
+  </ul>
+</nav>
