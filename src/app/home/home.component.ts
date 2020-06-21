@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { Router } from '@angular/router';
+import { UserService } from '../_services/user.service';
+import { MoodService } from '../_services/mood.service';
+import { runInThisContext } from 'vm';
 
 @Component({
   selector: 'app-home',
@@ -9,8 +12,27 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  hasMoodBeenSelected = false;
+  constructor(private router: Router, private userService: UserService, private moodService: MoodService) { }
 
   ngOnInit() {}
 
+  saveMood(moodValue: any) {
+
+    const userId = this.userService.getUserIdFromToken(localStorage.getItem('token'));
+
+    const moodModel = {
+      userid: userId,
+      moodvalue: moodValue
+    };
+
+    this.moodService.saveMood(moodModel).subscribe(next => {
+
+      console.log('do something after success. Remove the buttons perhaps? Secure the backend as well');
+      this.hasMoodBeenSelected = true;
+    }, error => {
+
+      console.log(error);
+    });
+  }
 }

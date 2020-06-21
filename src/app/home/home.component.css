@@ -12,3 +12,24 @@
 
     margin-left: 10px;
 }
+
+.show-selected-mood-message {
+
+    animation: shoWMessagePanel 2s forwards;
+}
+
+.hide-initial-mood-selection-home {
+
+    animation: hideHomePanel 1s forwards;
+}
+
+@keyframes hideHomePanel {
+
+    100% { opacity: 0;}
+}
+
+@keyframes shoWMessagePanel {
+
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}

@@ -42,7 +42,7 @@ export class NavComponent implements OnInit {
     return username;
   }
 
-  // make the code better
+  // make the code better because first compilation doesn't work
   dropdownMenu() {
 
     if (this.subscription) {
@@ -50,8 +50,9 @@ export class NavComponent implements OnInit {
       return;
     }
 
-    this.subscription = this.source.subscribe((event) => {
+    this.subscription = this.source.subscribe((event: any) => {
 
+      console.log(event);
       if (event.target.classList.contains('profile-image') || event.target.classList.contains('dropdown')) {
         this.dropdown = true;
       }

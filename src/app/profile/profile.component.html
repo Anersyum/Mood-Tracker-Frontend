@@ -1,7 +1,7 @@
 <form class="profile-form-container" (ngSubmit)="onSubmit()" #editProfileForm="ngForm" enctype="multipart/form-data">
   <div class="profile-image-container">
     <img class="profile-image" src="https://i.pinimg.com/originals/b6/8f/39/b68f39f4821a97d11a152e42fdcf8808.jpg">  
-    <input type="file">
+    <input type="file" name="profileImage" [(ngModel)]="model.profileImage">
   </div>
   <div class="profile-information-container">
     <label for="username">Username:</label>

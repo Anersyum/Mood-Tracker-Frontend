@@ -14,4 +14,9 @@ constructor() { }
 
     return this.jwtHelper.decodeToken(token).unique_name;
   }
+
+  getUserIdFromToken(token) {
+
+    return this.jwtHelper.decodeToken(token).nameid;
+  }
 }

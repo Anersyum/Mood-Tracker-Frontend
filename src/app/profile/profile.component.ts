@@ -9,7 +9,10 @@ import { UserService } from '../_services/user.service';
 export class ProfileComponent implements OnInit {
 
   model = {
-    username: null
+    username: null,
+    bio: null,
+    dateOfBirth: null,
+    profileImage: null
   };
 
   constructor(private userService: UserService) { }

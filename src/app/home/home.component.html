@@ -1,8 +1,11 @@
 <div class="mood-container">
-  <h1>What's your mood</h1>
-  <div class="mood-buttons-container">
-    <button>Depressed</button>
-    <button>Content</button>
-    <button>Happy</button>
+  <h1>
+    <span *ngIf="!this.hasMoodBeenSelected">What's your mood</span>
+    <span *ngIf="this.hasMoodBeenSelected">Your mood has been saved!</span>
+  </h1>
+  <div class="mood-buttons-container" [ngClass]="{'hide-initial-mood-selection-home': this.hasMoodBeenSelected}">
+      <button (click)="saveMood('0')">Depressed</button>
+      <button (click)="saveMood('1')">Content</button>
+      <button (click)="saveMood('2')">Happy</button>
   </div>
 </div>
