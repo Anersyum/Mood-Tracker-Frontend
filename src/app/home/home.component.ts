@@ -23,7 +23,8 @@ export class HomeComponent implements OnInit {
 
     const moodModel = {
       userid: userId,
-      moodvalue: moodValue
+      moodvalue: moodValue,
+      token: localStorage.getItem('token')
     };
 
     this.moodService.saveMood(moodModel).subscribe(next => {
