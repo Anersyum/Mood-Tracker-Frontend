@@ -13,7 +13,12 @@ export class MoodService {
 
   saveMood(moodModel: any) {
 
-   return this.http.post(this.baseUrl + 'save', moodModel).pipe(
+    const token = localStorage.getItem('token');
+    return this.http.post(this.baseUrl + 'save', moodModel, {
+     headers: {
+      Authorization: 'Bearer ' + token
+     }
+    }).pipe(
       map((response: any) => {
         const mood = response;
 
