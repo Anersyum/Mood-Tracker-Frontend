@@ -1,0 +1,14 @@
+.chart-container {
+
+    width: 100%;
+    height: calc(100% - 50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chart {
+
+    width: 50%; 
+    height: 60%;
+}

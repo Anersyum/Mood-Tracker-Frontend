@@ -1,3 +1,6 @@
-<p>
-  statistics works!
-</p>
+<div class="chart-container">
+  <google-chart class="chart" 
+    *ngIf="this.showChart" [title]="this.chartTitle"
+    [dynamicResize]="true"
+    [type]="this.chartType" [data]="this.chartData" [options]="this.chartOptions"></google-chart>
+</div>

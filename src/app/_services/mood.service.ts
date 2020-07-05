@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MoodService {
+
+  jwtHelper = new JwtHelperService();
 
   constructor(private http: HttpClient) { }
 
@@ -25,6 +28,18 @@ export class MoodService {
         console.log(mood);
       })
     );
+  }
+
+  getMonthlyMoods() {
+
+    const token = localStorage.getItem('token');
+    const userId = this.jwtHelper.decodeToken(token).nameid;
+
+    return this.http.get(this.baseUrl + 'get/' + userId, {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    });
   }
 
 }

@@ -1049,6 +1049,11 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
+"@types/google.visualization@^0.0.52":
+  version "0.0.52"
+  resolved "https://registry.yarnpkg.com/@types/google.visualization/-/google.visualization-0.0.52.tgz#3bf7ff3449be10250e59b5919fbbf5d93c251dca"
+  integrity sha512-zyY6z8JswGNRVK2TwZGOGLnRKiBdHAAyj5SwBMRwPM0DclvwMR91GZHiXH2/hNPJNlc3VdmFDQPVl1zzSYN6pw==
+
 "@types/jasmine@*", "@types/jasmine@~3.5.0":
   version "3.5.10"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-3.5.10.tgz#a1a41012012b5da9d4b205ba9eba58f6cce2ab7b"
@@ -1360,6 +1365,13 @@ alphanum-sort@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
   integrity sha1-l6ERlkmyEa0zaR2fn0hqjsn74KM=
+
+angular-google-charts@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/angular-google-charts/-/angular-google-charts-1.1.4.tgz#ee21a262a2cc1d6ddb7710e1fe2ce8f1310d5c2f"
+  integrity sha512-QrvTtyAaBOvYR6MVOrAdHt2kdJT/3TH9NfQPKalyqfTbqrEStPHgcaVqWcm2x/csDe0uIepGnl7/8YlPWvjn7g==
+  dependencies:
+    "@types/google.visualization" "^0.0.52"
 
 ansi-colors@4.1.1:
   version "4.1.1"
