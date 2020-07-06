@@ -27,7 +27,11 @@ export class StatisticsComponent implements OnInit {
     },
     vAxis: {
       format: '#',
-      minValue: 0,
+      viewWindowMode: 'explicit',
+      viewWindow: {
+        min: 0,
+        max: 1
+      }
     },
     isStacked: true
   };
@@ -51,10 +55,14 @@ export class StatisticsComponent implements OnInit {
             this.happy++;
             break;
         }
-
-        this.chartData = this.getChartData();
-        this.showChart = true;
       }
+
+      const maxValue = (this.depressed > this.content && this.depressed > this.happy) ? this.depressed :
+        (this.content > this.depressed && this.content > this.happy) ? this.happy : this.happy;
+
+      this.chartOptions.vAxis.viewWindow.max = (maxValue === 0) ? 1 : maxValue;
+      this.chartData = this.getChartData();
+      this.showChart = true;
     });
   }
 
