@@ -17,11 +17,19 @@ export class StatisticsComponent implements OnInit {
   content = 0;
   chartData: any;
   showChart = false;
-  chartTitle = 'This months mood statistics';
+  chartTitle = 'Mood statistics';
   chartOptions = {
     colors: ['purple', 'blue', 'red'],
     backgroundColor: 'transparent',
     legend: 'none',
+    hAxis: {
+      title: 'Moods'
+    },
+    vAxis: {
+      format: '#',
+      minValue: 0,
+    },
+    isStacked: true
   };
 
   constructor(private moodService: MoodService) {  }
@@ -53,9 +61,9 @@ export class StatisticsComponent implements OnInit {
   getChartData() {
 
     return [
-      ['Deppresed', this.depressed],
-      ['Content', this.content],
-      ['Happy', this.happy]
+      ['Deppresed', this.depressed, 0, 0],
+      ['Content', 0, this.content, 0],
+      ['Happy', 0, 0, this.happy]
     ];
   }
 }
