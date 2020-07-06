@@ -19,7 +19,7 @@ export class StatisticsComponent implements OnInit {
   showChart = false;
   chartTitle = 'Mood statistics';
   chartOptions = {
-    colors: ['purple', 'blue', 'red'],
+    colors: ['#745c97', '#8ac6d1', '#bd574e'],
     backgroundColor: 'transparent',
     legend: 'none',
     hAxis: {
