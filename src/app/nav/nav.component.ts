@@ -16,6 +16,7 @@ export class NavComponent implements OnInit {
   dropdown = false;
   source = fromEvent(document, 'click');
   subscription = null;
+  showSearch = false;
 
   constructor(public authService: AuthService, private router: Router, private userService: UserService) { }
 
@@ -62,5 +63,10 @@ export class NavComponent implements OnInit {
         this.subscription = null;
       }
     });
+  }
+
+  toggleSearchBar() {
+
+    this.showSearch = !this.showSearch;
   }
 }

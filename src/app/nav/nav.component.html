@@ -17,6 +17,13 @@
     <li *ngIf="isLoggedIn()">
       <a [routerLink]="['/statistics']" routerLinkActive="activated" >Statistics</a>
     </li>
+    <li>
+      <a (click)="toggleSearchBar()"><i class="fa fa-search" aria-hidden="true"></i></a>
+    </li>
+    <li class="user-search-area" *ngIf="this.showSearch">
+      <input type="text" placeholder="Search user..."> 
+      <!-- animate the search bar -->
+    </li>
     <li *ngIf="isLoggedIn()" class="navigation-username">
       Welcome back {{ getLoggedInUsername() | titlecase }}!
       <div class="profile-image" (click)="dropdownMenu()">

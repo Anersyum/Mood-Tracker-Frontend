@@ -2,6 +2,7 @@
 @import "./app/nav/nav.component.css";
 @import "./app/login/login.component.css";
 @import "./app/home/home.component.css";
+@import "./assets/font-awesome/css/font-awesome.min.css";
 
 button {
 

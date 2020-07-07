@@ -167,3 +167,17 @@
     flex-direction: column;
 }
 /*---------------- END OF DROPDOWN MENU ---------------------*/
+/*---------------- START OF SEARCH BAR ----------------------*/
+.user-search-area {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-search-area input {
+
+    margin: 0;    
+    padding: 5px 10px;
+}
+/*---------------- END OF SEARCH BAR ----------------------*/
