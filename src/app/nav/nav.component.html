@@ -22,7 +22,7 @@
       <a (click)="toggleSearchBar()"><i class="fa fa-search" aria-hidden="true"></i></a>
     </li>
     <li class="user-search-area" *ngIf="this.showSearch">
-      <input type="text" placeholder="Search user..."> 
+      <input type="text" placeholder="Search user..." [ngClass]="{'search-bar': true,'expand-search-bar': this.showSearch}"> 
       <!-- animate the search bar -->
     </li>
     <li *ngIf="isLoggedIn()" class="navigation-username">

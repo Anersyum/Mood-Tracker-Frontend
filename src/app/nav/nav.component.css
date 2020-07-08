@@ -170,14 +170,24 @@
 /*---------------- START OF SEARCH BAR ----------------------*/
 .user-search-area {
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 100%;
+    padding-top: 14px;
 }
 
-.user-search-area input {
+.search-bar {
 
-    margin: 0;    
-    padding: 5px 10px;
+    margin: 0;
+    padding: 10px 10px;
+}
+
+.expand-search-bar {
+
+    animation: expandSearch 0.5s forwards;
+}
+
+@keyframes expandSearch {
+
+    0% { width: 0%; }
+    100% { width: 100%; }
 }
 /*---------------- END OF SEARCH BAR ----------------------*/
