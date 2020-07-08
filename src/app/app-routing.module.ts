@@ -8,6 +8,7 @@ import { LoggedinGuard } from './_guard/loggedin.guard';
 import { AuthGuard } from './_guard/auth.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { StatisticsComponent } from './statistics/statistics.component';
+import { DiaryComponent } from './diary/diary.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [LoggedinGuard]},
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: '', component: IndexComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'statistics', component: StatisticsComponent, canActivate: [AuthGuard] },
+  { path: 'diary', component: DiaryComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 

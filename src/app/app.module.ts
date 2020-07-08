@@ -17,6 +17,7 @@ import { AuthGuard } from './_guard/auth.guard';
 import { LoggedinGuard } from './_guard/loggedin.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { StatisticsComponent } from './statistics/statistics.component';
+import { DiaryComponent } from './diary/diary.component';
 
 @NgModule({
    declarations: [
@@ -27,7 +28,8 @@ import { StatisticsComponent } from './statistics/statistics.component';
       HomeComponent,
       IndexComponent,
       ProfileComponent,
-      StatisticsComponent
+      StatisticsComponent,
+      DiaryComponent
    ],
    imports: [
       BrowserModule,

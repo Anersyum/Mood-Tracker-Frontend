@@ -18,7 +18,10 @@
     <li *ngIf="isLoggedIn()">
       <a [routerLink]="['/statistics']" routerLinkActive="activated" >Statistics</a>
     </li>
-    <li>
+    <li *ngIf="isLoggedIn()">
+      <a [routerLink]="['/diary']" routerLinkActive="activated">Diary</a>
+    </li>
+    <li *ngIf="isLoggedIn()">
       <a (click)="toggleSearchBar()"><i class="fa fa-search" aria-hidden="true"></i></a>
     </li>
     <li class="user-search-area" *ngIf="this.showSearch">
