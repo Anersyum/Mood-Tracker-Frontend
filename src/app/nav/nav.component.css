@@ -167,6 +167,11 @@
     flex-direction: column;
 }
 /*---------------- END OF DROPDOWN MENU ---------------------*/
+.search-icon a:hover {
+
+    background-color: initial;
+    color: antiquewhite;
+}
 /*---------------- START OF SEARCH BAR ----------------------*/
 .user-search-area {
 
