@@ -29,4 +29,9 @@
       <button type="submit" class="create-btn">Create</button>
     </form>
   </div>
+  <div *ngIf="this.showEntryInModal" class="show-entry">
+    <div class="entry">
+      {{ this.entry.entry }}
+    </div>
+  </div>
 </div>

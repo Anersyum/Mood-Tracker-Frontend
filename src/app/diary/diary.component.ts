@@ -16,6 +16,8 @@ export class DiaryComponent implements OnInit {
     userId: ''
   };
   diaryEntries: any;
+  showEntryInModal = false;
+  entry: any;
 
   constructor(private diaryService: DiaryService, private userService: UserService) { }
 
@@ -53,12 +55,13 @@ export class DiaryComponent implements OnInit {
       console.log(error);
     });
   }
-// todo: create modal window for showing entries.
+// todo: style the modal window. Add close window support and 
   showEntry(entryId) {
 
     this.diaryService.getOneDiaryEntry(entryId).subscribe(response => {
 
-      alert(response['entry']);
+      this.entry = response;
+      this.showEntryInModal = true;
     }, error => {
       console.error(error);
     });
