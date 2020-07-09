@@ -1,0 +1,25 @@
+.diary-container {
+
+    width: 100%;
+    height: calc(100% - 150px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+#create-new-diary-entry {
+
+    width: 70%;
+}
+
+#create-new-diary-entry .create-btn {
+
+    margin-left: 10px;
+}
+
+#diary-entry {
+
+    margin-top: 10px;
+    height: 300px;
+}

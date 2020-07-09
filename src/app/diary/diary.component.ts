@@ -7,9 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DiaryComponent implements OnInit {
 
+  isCreatingNewDiaryEntry = false;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  createNewDiaryEntry() {
+
+    this.isCreatingNewDiaryEntry = true;
+  }
+
+  cancelDiaryEntryCreation() {
+
+    this.isCreatingNewDiaryEntry = false;
+  }
+
+  createDiaryEntry() {
+    // create entry
+  }
 }

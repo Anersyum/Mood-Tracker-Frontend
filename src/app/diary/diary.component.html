@@ -1,3 +1,23 @@
-<p>
-  diary works!
-</p>
+<div class="diary-container">
+  <div id="diary-entries" *ngIf="!this.isCreatingNewDiaryEntry">
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+  
+      </tbody>
+    </table>
+    <button (click)="createNewDiaryEntry()">Create new entry</button>
+  </div>
+  <div id="create-new-diary-entry" *ngIf="this.isCreatingNewDiaryEntry">
+    <label for="diary-entry">Write something in your diary</label>
+    <!-- change textarea to wysiwyg -->
+    <textarea name="diaryEntry" id="diary-entry"></textarea>
+    <button (click)="cancelDiaryEntryCreation()">Cancel</button>
+    <button (click)="createDiaryEntry()" class="create-btn">Create</button>
+  </div>
+</div>
