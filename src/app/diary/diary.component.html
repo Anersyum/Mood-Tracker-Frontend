@@ -8,16 +8,25 @@
         </tr>
       </thead>
       <tbody>
-  
+        <tr *ngFor="let entry of this.diaryEntries">
+          <td>{{ entry.title }}</td>
+          <td>{{ entry.dateRecorded }}</td>
+        </tr>
       </tbody>
     </table>
     <button (click)="createNewDiaryEntry()">Create new entry</button>
   </div>
   <div id="create-new-diary-entry" *ngIf="this.isCreatingNewDiaryEntry">
-    <label for="diary-entry">Write something in your diary</label>
-    <!-- change textarea to wysiwyg -->
-    <textarea name="diaryEntry" id="diary-entry"></textarea>
-    <button (click)="cancelDiaryEntryCreation()">Cancel</button>
-    <button (click)="createDiaryEntry()" class="create-btn">Create</button>
+    <form (ngSubmit)="createDiaryEntry()" #diaryEntryForm="ngForm">
+      <label for="">Title</label>
+      <br>
+      <input type="text" name="title" [(ngModel)]="diaryModel.title">
+      <br>
+      <label for="diary-entry">Write something in your diary</label>
+      <!-- change textarea to wysiwyg -->
+      <textarea name="entry" id="diary-entry" [(ngModel)]="diaryModel.entry"></textarea>
+      <button (click)="cancelDiaryEntryCreation()">Cancel</button>
+      <button type="submit" class="create-btn">Create</button>
+    </form>
   </div>
 </div>
