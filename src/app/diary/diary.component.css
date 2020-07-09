@@ -23,3 +23,14 @@
     margin-top: 10px;
     height: 300px;
 }
+
+.selectable-entry {
+
+    color: white;
+    cursor: pointer;
+}
+
+.selectable-entry:hover {
+
+    color: wheat;
+}

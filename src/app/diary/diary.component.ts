@@ -47,15 +47,20 @@ export class DiaryComponent implements OnInit {
 
     this.diaryService.saveDiaryEntry(this.diaryModel).subscribe(response => {
 
-      this.diaryEntries.push(
-        {
-          title: this.diaryModel.title,
-          dateRecorded: Date.now()
-        }
-      );
+      this.diaryEntries.push(response);
       this.cancelDiaryEntryCreation();
     }, error => {
       console.log(error);
+    });
+  }
+// todo: create modal window for showing entries.
+  showEntry(entryId) {
+
+    this.diaryService.getOneDiaryEntry(entryId).subscribe(response => {
+
+      alert(response['entry']);
+    }, error => {
+      console.error(error);
     });
   }
 }

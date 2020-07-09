@@ -9,7 +9,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let entry of this.diaryEntries">
-          <td>{{ entry.title }}</td>
+          <td class="selectable-entry" (click)="showEntry(entry.id)">{{ entry.title }}</td>
           <td>{{ entry.dateRecorded }}</td>
         </tr>
       </tbody>
