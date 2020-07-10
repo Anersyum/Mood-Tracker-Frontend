@@ -55,7 +55,7 @@ export class DiaryComponent implements OnInit {
       console.log(error);
     });
   }
-// todo: style the modal window. Add close window support and 
+// todo: style the modal window. Add close window support and format date on the api
   showEntry(entryId) {
 
     this.diaryService.getOneDiaryEntry(entryId).subscribe(response => {

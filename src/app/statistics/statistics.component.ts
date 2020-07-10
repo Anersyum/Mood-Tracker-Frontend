@@ -31,7 +31,7 @@ export class StatisticsComponent implements OnInit {
       viewWindow: {
         min: 0,
         max: 1
-      }
+      },
     },
     isStacked: true
   };
@@ -42,23 +42,11 @@ export class StatisticsComponent implements OnInit {
     this.moodService.getMonthlyMoods().subscribe((resp: any) => {
       this.mood = resp;
 
-      for (const mood of resp) {
+      this.depressed = this.mood[0];
+      this.content = this.mood[1];
+      this.happy = this.mood[2];
 
-        switch (mood.moodValue) {
-          case 0:
-            this.depressed++;
-            break;
-          case 1:
-            this.content++;
-            break;
-          case 2:
-            this.happy++;
-            break;
-        }
-      }
-
-      const maxValue = (this.depressed > this.content && this.depressed > this.happy) ? this.depressed :
-        (this.content > this.depressed && this.content > this.happy) ? this.happy : this.happy;
+      const maxValue = Math.max(...this.mood);
 
       this.chartOptions.vAxis.viewWindow.max = (maxValue === 0) ? 1 : maxValue;
       this.chartData = this.getChartData();
