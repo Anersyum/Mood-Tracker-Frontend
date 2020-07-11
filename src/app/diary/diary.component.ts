@@ -66,4 +66,9 @@ export class DiaryComponent implements OnInit {
       console.error(error);
     });
   }
+
+  closeOpenedEntry() {
+
+    this.showEntryInModal = false;
+  }
 }

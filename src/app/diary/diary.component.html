@@ -29,8 +29,9 @@
       <button type="submit" class="create-btn">Create</button>
     </form>
   </div>
-  <div *ngIf="this.showEntryInModal" class="show-entry"></div>
+  <div *ngIf="this.showEntryInModal" class="show-entry" (click)="closeOpenedEntry()"></div>
   <div class="entry" *ngIf="this.showEntryInModal">
-    {{ this.entry.entry }}
+    <span>{{ this.entry.entry }}</span>
+    <a class="close-entry" (click)="closeOpenedEntry()">X</a>
   </div>
 </div>
