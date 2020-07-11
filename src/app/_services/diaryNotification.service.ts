@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class DiaryNotificationService {
 
-  notificationStackHeight = -70;
+  notificationStackHeight = -60;
 
   constructor() { }
 
@@ -29,18 +29,18 @@ export class DiaryNotificationService {
       notificationContainer.style.backgroundColor = 'red';
     }
 
-    this.notificationStackHeight += 80;
+    this.notificationStackHeight += 70;
     console.log(this.notificationStackHeight);
     notificationContainer.style.setProperty('--notification-height', this.notificationStackHeight + 'px');
 
     document.body.appendChild(notificationContainer);
-    // todo: edit notification to stack upwards.
+    // todo: fix popup going out of bounds
     setTimeout(() => {
       document.body.removeChild(notificationContainer);
 
       if (!document.querySelector('.diary-notify')) {
 
-        this.notificationStackHeight = -70;
+        this.notificationStackHeight = -60;
       }
     }, 3000);
   }
