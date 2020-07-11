@@ -67,13 +67,18 @@ body, html {
 
 /* Diary notification style */
 
+:root {
+
+    --notification-height: 0;
+}
+
 .diary-notify {
 
     width: 250px;
     height: 70px;
     background-color: white;
     position: absolute;
-    bottom: 10px;
+    bottom: var(--notification-height);
     /* right: 10px; */
     color: white;
     font-size: 14pt;
