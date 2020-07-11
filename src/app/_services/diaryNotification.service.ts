@@ -37,7 +37,11 @@ export class DiaryNotificationService {
     // todo: edit notification to stack upwards.
     setTimeout(() => {
       document.body.removeChild(notificationContainer);
-      this.notificationStackHeight -= 80;
+
+      if (!document.querySelector('.diary-notify')) {
+
+        this.notificationStackHeight = -70;
+      }
     }, 3000);
   }
 }
