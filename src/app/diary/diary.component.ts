@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DiaryService } from '../_services/diary.service';
 import { UserService } from '../_services/user.service';
+import { DiaryNotificationService } from '../_services/diaryNotification.service';
 
 @Component({
   selector: 'app-diary',
@@ -19,7 +20,8 @@ export class DiaryComponent implements OnInit {
   showEntryInModal = false;
   entry: any;
 
-  constructor(private diaryService: DiaryService, private userService: UserService) { }
+  constructor(private diaryService: DiaryService, private userService: UserService,
+    private notify: DiaryNotificationService) { }
 
   ngOnInit() {
 
@@ -51,8 +53,10 @@ export class DiaryComponent implements OnInit {
 
       this.diaryEntries.push(response);
       this.cancelDiaryEntryCreation();
+      this.notify.notify('Created entry successfully!');
     }, error => {
       console.log(error);
+      this.notify.notify('Entry was not created.', false);
     });
   }
 // todo: style the modal window. Add close window support and format date on the api
@@ -70,5 +74,10 @@ export class DiaryComponent implements OnInit {
   closeOpenedEntry() {
 
     this.showEntryInModal = false;
+  }
+
+  createNotification() {
+
+    this.notify.notify('Hello');
   }
 }

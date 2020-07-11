@@ -1,3 +1,4 @@
+<!-- Main window -->
 <div class="diary-container">
   <div id="diary-entries" *ngIf="!this.isCreatingNewDiaryEntry">
     <table border="1">
@@ -16,6 +17,8 @@
     </table>
     <button (click)="createNewDiaryEntry()">Create new entry</button>
   </div>
+  <!-- -------------------------------------------------------------------------------------- -->
+  <!-- Window for creating a new diary entry -->
   <div id="create-new-diary-entry" *ngIf="this.isCreatingNewDiaryEntry">
     <form (ngSubmit)="createDiaryEntry()" #diaryEntryForm="ngForm">
       <label for="">Title</label>
@@ -29,9 +32,13 @@
       <button type="submit" class="create-btn">Create</button>
     </form>
   </div>
+  <!-- -------------------------------------------------------------------------------------- -->
+  <!-- Modal for showing diary entry text -->
   <div *ngIf="this.showEntryInModal" class="show-entry" (click)="closeOpenedEntry()"></div>
   <div class="entry" *ngIf="this.showEntryInModal">
     <span>{{ this.entry.entry }}</span>
     <a class="close-entry" (click)="closeOpenedEntry()">X</a>
   </div>
+  <button (click)="createNotification()">Create notify</button>
 </div>
+<!-- -------------------------------------------------------------------------------------------- -->
