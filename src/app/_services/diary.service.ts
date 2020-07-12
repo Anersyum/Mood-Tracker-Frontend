@@ -44,7 +44,23 @@ export class DiaryService {
       headers: {
         Authorization: 'Bearer ' + token
       }
-    })
+    });
   }
+// todo: fix unexpected token D in json at position 0 error. And reload the component after deletion or
+// remove the entry from the frontend
+  deleteDiaryEntry(userId: number, diaryId: number) {
 
+    const token = localStorage.getItem('token');
+
+    const diaryEntryToDelete = {
+      id: diaryId,
+      userId
+    };
+
+    return this.http.post(this.baseUrl + 'delete', diaryEntryToDelete, {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    });
+  }
 }

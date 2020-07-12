@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DiaryService } from '../_services/diary.service';
 import { UserService } from '../_services/user.service';
 import { DiaryNotificationService } from '../_services/diaryNotification.service';
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-diary',
@@ -21,7 +23,7 @@ export class DiaryComponent implements OnInit {
   entry: any;
 
   constructor(private diaryService: DiaryService, private userService: UserService,
-              private notify: DiaryNotificationService) { }
+              private notify: DiaryNotificationService, private router: Router) { }
 
   ngOnInit() {
 
@@ -81,8 +83,17 @@ export class DiaryComponent implements OnInit {
     alert('edit' + entryId);
   }
 
+  // todo: fix the error. Delete works fine but it returns the error. Use dto for sending ids
   deleteEntry(entryId) {
 
-    alert('delete ' + entryId);
+    const userId = this.userService.getUserIdFromToken(localStorage.getItem('token'));
+
+    this.diaryService.deleteDiaryEntry(userId, entryId).subscribe(response => {
+
+      this.router.navigateByUrl('/diary');
+      console.log(response);
+    }, error => {
+      console.log(error);
+    });
   }
 }
