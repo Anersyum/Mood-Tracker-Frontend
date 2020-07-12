@@ -22,11 +22,11 @@ export class DiaryNotificationService {
 
     if (success) {
 
-      notificationContainer.style.backgroundColor = 'green';
+      notificationContainer.style.backgroundColor = '#75b79e';
     }
     else {
 
-      notificationContainer.style.backgroundColor = 'red';
+      notificationContainer.style.backgroundColor = '#d8345f';
     }
 
     this.notificationStackHeight += 70;

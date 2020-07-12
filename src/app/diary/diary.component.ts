@@ -21,7 +21,7 @@ export class DiaryComponent implements OnInit {
   entry: any;
 
   constructor(private diaryService: DiaryService, private userService: UserService,
-    private notify: DiaryNotificationService) { }
+              private notify: DiaryNotificationService) { }
 
   ngOnInit() {
 
@@ -74,10 +74,5 @@ export class DiaryComponent implements OnInit {
   closeOpenedEntry() {
 
     this.showEntryInModal = false;
-  }
-
-  createNotification() {
-
-    this.notify.notify('Hello');
   }
 }
