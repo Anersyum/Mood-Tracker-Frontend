@@ -61,14 +61,16 @@
     overflow: auto;
     word-wrap: break-word;
     animation: pageEntry 1s forwards;
+    text-align: justify;
 }
 
 @keyframes pageEntry {
 
     0% { width: 0; height: 0; color: transparent; }
     50% { width: 40%; height: 0; color: transparent; }
-    100% { height: calc(100% - 90px); color: black;}
+    100% { height: calc(100% - 90px); color: black; }
 }
+
 .close-entry {
 
     position: absolute;

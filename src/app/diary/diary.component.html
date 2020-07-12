@@ -12,6 +12,8 @@
         <tr *ngFor="let entry of this.diaryEntries">
           <td class="selectable-entry" (click)="showEntry(entry.id)">{{ entry.title }}</td>
           <td>{{ entry.dateRecorded }}</td>
+          <td><a (click)="editEntry(entry.id)" class="selectable-entry">Edit</a></td>
+          <td><a (click)="deleteEntry(entry.id)" class="selectable-entry">Delete</a></td>
         </tr>
       </tbody>
     </table>

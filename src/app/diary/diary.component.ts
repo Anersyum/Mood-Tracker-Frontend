@@ -75,4 +75,14 @@ export class DiaryComponent implements OnInit {
 
     this.showEntryInModal = false;
   }
+
+  editEntry(entryId) {
+
+    alert('edit' + entryId);
+  }
+
+  deleteEntry(entryId) {
+
+    alert('delete ' + entryId);
+  }
 }
