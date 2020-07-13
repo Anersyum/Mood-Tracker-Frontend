@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { DiaryService } from '../_services/diary.service';
 import { UserService } from '../_services/user.service';
 import { DiaryNotificationService } from '../_services/diaryNotification.service';
-import { Route } from '@angular/compiler/src/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-diary',
@@ -12,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class DiaryComponent implements OnInit {
 
-  isCreatingNewDiaryEntry = false;
+  isWrittingToDiary = false;
   diaryModel = {
     title: '',
     entry: '',
@@ -20,18 +18,19 @@ export class DiaryComponent implements OnInit {
   };
   diaryEntries: any;
   showEntryInModal = false;
-  entry: any;
+  diaryEntry: any;
   isEditing = false;
 
   constructor(private diaryService: DiaryService, private userService: UserService,
-              private notify: DiaryNotificationService, private router: Router) { }
+              private diaryNotificationService: DiaryNotificationService) { }
 
   ngOnInit() {
 
     this.diaryService.getAllUserEntries().subscribe(response => {
 
       this.diaryEntries = response;
-      this.cancelDiaryEntryCreation();
+
+      this.cancelWrittingToDiary();
       this.clearDiaryModel();
     }, error => {
 
@@ -39,31 +38,20 @@ export class DiaryComponent implements OnInit {
     });
   }
 
-  createNewDiaryEntry() {
+  writeToDiary() {
 
-    this.isCreatingNewDiaryEntry = true;
+    this.isWrittingToDiary = true;
   }
 
-  cancelDiaryEntryCreation() {
+  cancelWrittingToDiary() {
 
-    this.isCreatingNewDiaryEntry = false;
+    this.isWrittingToDiary = false;
   }
 
   createDiaryEntry() {
 
     if (this.isEditing) {
-
-      this.diaryService.editDiaryEntry(this.diaryModel).subscribe(response => {
-
-        this.ngOnInit();
-        this.notify.notify('Entry edited successfully!');
-        this.isEditing = false;
-      }, error => {
-        this.cancelDiaryEntryCreation();
-        this.notify.notify('Entry editing failed.', false);
-        console.error(error);
-      });
-
+      this.editDiaryEntry();
       return;
     }
 
@@ -74,18 +62,35 @@ export class DiaryComponent implements OnInit {
       this.ngOnInit();
       this.clearDiaryModel();
 
-      this.notify.notify('Created entry successfully!');
+      this.diaryNotificationService.notify('Created entry successfully!');
     }, error => {
       console.log(error);
-      this.notify.notify('Entry was not created.', false);
+      this.diaryNotificationService.notify('Entry was not created.', false);
     });
   }
-// todo: style the modal window. Add close window support and format date on the api
+
+  editDiaryEntry() {
+
+    this.diaryService.editDiaryEntry(this.diaryModel).subscribe(response => {
+
+      this.ngOnInit();
+      this.diaryNotificationService.notify('Entry edited successfully!');
+
+      this.isEditing = false;
+    }, error => {
+
+      this.cancelWrittingToDiary();
+      this.diaryNotificationService.notify('Entry editing failed.', false);
+
+      console.error(error);
+    });
+  }
+// todo: format date on the api
   showEntry(entryId) {
 
     this.diaryService.getOneDiaryEntry(entryId).subscribe(response => {
 
-      this.entry = response;
+      this.diaryEntry = response;
       this.showEntryInModal = true;
     }, error => {
       console.error(error);
@@ -102,7 +107,7 @@ export class DiaryComponent implements OnInit {
     this.diaryService.getOneDiaryEntry(entryId).subscribe((response: any) => {
 
       this.diaryModel = response;
-      this.isCreatingNewDiaryEntry = true;
+      this.isWrittingToDiary = true;
       this.isEditing = true;
     })
   }
@@ -114,9 +119,9 @@ export class DiaryComponent implements OnInit {
     this.diaryService.deleteDiaryEntry(userId, entryId).subscribe(response => {
 
       this.ngOnInit();
-      this.notify.notify('Entry deleted successfully!');
+      this.diaryNotificationService.notify('Entry deleted successfully!');
     }, error => {
-      this.notify.notify('There was a problem deleteing the diary entry.', false);
+      this.diaryNotificationService.notify('There was a problem deleteing the diary entry.', false);
       console.log(error);
     });
   }

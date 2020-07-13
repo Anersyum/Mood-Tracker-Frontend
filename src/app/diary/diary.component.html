@@ -1,6 +1,6 @@
 <!-- Main window -->
 <div class="diary-container">
-  <div id="diary-entries" *ngIf="!this.isCreatingNewDiaryEntry">
+  <div id="diary-entries" *ngIf="!this.isWrittingToDiary">
     <table border="1">
       <thead>
         <tr>
@@ -17,11 +17,11 @@
         </tr>
       </tbody>
     </table>
-    <button (click)="createNewDiaryEntry()">Create new entry</button>
+    <button (click)="writeToDiary()">Write to diary</button>
   </div>
   <!-- -------------------------------------------------------------------------------------- -->
   <!-- Window for creating a new diary entry -->
-  <div id="create-new-diary-entry" *ngIf="this.isCreatingNewDiaryEntry">
+  <div id="create-new-diary-entry" *ngIf="this.isWrittingToDiary">
     <form (ngSubmit)="createDiaryEntry()" #diaryEntryForm="ngForm">
       <label for="">Title</label>
       <br>
@@ -30,7 +30,7 @@
       <label for="diary-entry">Write something in your diary</label>
       <!-- change textarea to wysiwyg -->
       <textarea name="entry" id="diary-entry" [(ngModel)]="diaryModel.entry"></textarea>
-      <button (click)="cancelDiaryEntryCreation()">Cancel</button>
+      <button (click)="cancelWrittingToDiary()">Cancel</button>
       <button type="submit" class="create-btn" *ngIf="!this.isEditing">Create</button>
       <button type="submit" class="create-btn" *ngIf="this.isEditing">Edit</button>
     </form>
@@ -39,7 +39,7 @@
   <!-- Modal for showing diary entry text -->
   <div *ngIf="this.showEntryInModal" class="show-entry" (click)="closeOpenedEntry()"></div>
   <div class="entry" *ngIf="this.showEntryInModal">
-    <span>{{ this.entry.entry }}</span>
+    <span>{{ this.diaryEntry.entry }}</span>
     <a class="close-entry" (click)="closeOpenedEntry()">X</a>
   </div>
 </div>
