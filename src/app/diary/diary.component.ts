@@ -21,6 +21,7 @@ export class DiaryComponent implements OnInit {
   diaryEntries: any;
   showEntryInModal = false;
   entry: any;
+  isEditing = false;
 
   constructor(private diaryService: DiaryService, private userService: UserService,
               private notify: DiaryNotificationService, private router: Router) { }
@@ -30,7 +31,8 @@ export class DiaryComponent implements OnInit {
     this.diaryService.getAllUserEntries().subscribe(response => {
 
       this.diaryEntries = response;
-      console.log(response);
+      this.cancelDiaryEntryCreation();
+      this.clearDiaryModel();
     }, error => {
 
       console.error(error);
@@ -49,13 +51,27 @@ export class DiaryComponent implements OnInit {
 
   createDiaryEntry() {
 
+    if (this.isEditing) {
+
+      this.diaryService.editDiaryEntry(this.diaryModel).subscribe(response => {
+
+        this.ngOnInit();
+        this.notify.notify('Entry edited successfully!');
+        this.isEditing = false;
+      }, error => {
+        this.cancelDiaryEntryCreation();
+        this.notify.notify('Entry editing failed.', false);
+        console.error(error);
+      });
+
+      return;
+    }
+
     this.diaryModel.userId = this.userService.getUserIdFromToken(localStorage.getItem('token'));
 
     this.diaryService.saveDiaryEntry(this.diaryModel).subscribe(response => {
 
-      this.diaryEntries.push(response);
-
-      this.cancelDiaryEntryCreation();
+      this.ngOnInit();
       this.clearDiaryModel();
 
       this.notify.notify('Created entry successfully!');
@@ -81,12 +97,16 @@ export class DiaryComponent implements OnInit {
     this.showEntryInModal = false;
   }
 
-  editEntry(entryId) {
+  initializeEdit(entryId: number) {
 
-    alert('edit' + entryId);
+    this.diaryService.getOneDiaryEntry(entryId).subscribe((response: any) => {
+
+      this.diaryModel = response;
+      this.isCreatingNewDiaryEntry = true;
+      this.isEditing = true;
+    })
   }
 
-  // todo: fix the error. Delete works fine but it returns the error. Use dto for sending ids
   deleteEntry(entryId: number) {
 
     const userId = this.userService.getUserIdFromToken(localStorage.getItem('token'));

@@ -12,7 +12,7 @@
         <tr *ngFor="let entry of this.diaryEntries">
           <td class="selectable-entry" (click)="showEntry(entry.id)">{{ entry.title }}</td>
           <td>{{ entry.dateRecorded }}</td>
-          <td><a (click)="editEntry(entry.id)" class="selectable-entry">Edit</a></td>
+          <td><a (click)="initializeEdit(entry.id)" class="selectable-entry">Edit</a></td>
           <td><a (click)="deleteEntry(entry.id)" class="selectable-entry">Delete</a></td>
         </tr>
       </tbody>
@@ -31,7 +31,8 @@
       <!-- change textarea to wysiwyg -->
       <textarea name="entry" id="diary-entry" [(ngModel)]="diaryModel.entry"></textarea>
       <button (click)="cancelDiaryEntryCreation()">Cancel</button>
-      <button type="submit" class="create-btn">Create</button>
+      <button type="submit" class="create-btn" *ngIf="!this.isEditing">Create</button>
+      <button type="submit" class="create-btn" *ngIf="this.isEditing">Edit</button>
     </form>
   </div>
   <!-- -------------------------------------------------------------------------------------- -->
