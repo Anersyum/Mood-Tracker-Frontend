@@ -54,7 +54,10 @@ export class DiaryComponent implements OnInit {
     this.diaryService.saveDiaryEntry(this.diaryModel).subscribe(response => {
 
       this.diaryEntries.push(response);
+
       this.cancelDiaryEntryCreation();
+      this.clearDiaryModel();
+
       this.notify.notify('Created entry successfully!');
     }, error => {
       console.log(error);
@@ -84,16 +87,26 @@ export class DiaryComponent implements OnInit {
   }
 
   // todo: fix the error. Delete works fine but it returns the error. Use dto for sending ids
-  deleteEntry(entryId) {
+  deleteEntry(entryId: number) {
 
     const userId = this.userService.getUserIdFromToken(localStorage.getItem('token'));
 
     this.diaryService.deleteDiaryEntry(userId, entryId).subscribe(response => {
 
-      this.router.navigateByUrl('/diary');
-      console.log(response);
+      this.ngOnInit();
+      this.notify.notify('Entry deleted successfully!');
     }, error => {
+      this.notify.notify('There was a problem deleteing the diary entry.', false);
       console.log(error);
     });
+  }
+
+  clearDiaryModel() {
+
+    this.diaryModel = {
+      title: '',
+      entry: '',
+      userId: ''
+    };
   }
 }
