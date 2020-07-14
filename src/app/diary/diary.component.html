@@ -1,7 +1,8 @@
 <!-- Main window -->
 <div class="diary-container">
   <div id="diary-entries" *ngIf="!this.isWrittingToDiary">
-    <table border="1">
+    <div class="summaryPage" *ngIf="this.isBookOpen">
+      <table border="1" style="width: 100%;">
       <thead>
         <tr>
           <th>Title</th>
@@ -17,6 +18,8 @@
         </tr>
       </tbody>
     </table>
+    </div>
+    <div class="book" (click)="openBook()" [ngClass]="{'openBook': this.isBookOpen}"></div>  
     <button (click)="writeToDiary()">Write to diary</button>
   </div>
   <!-- -------------------------------------------------------------------------------------- -->

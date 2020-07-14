@@ -20,6 +20,7 @@ export class DiaryComponent implements OnInit {
   showEntryInModal = false;
   diaryEntry: any;
   isEditing = false;
+  isBookOpen = false;
 
   constructor(private diaryService: DiaryService, private userService: UserService,
               private diaryNotificationService: DiaryNotificationService) { }
@@ -32,6 +33,8 @@ export class DiaryComponent implements OnInit {
 
       this.cancelWrittingToDiary();
       this.clearDiaryModel();
+
+      this.isEditing = false;
     }, error => {
 
       console.error(error);
@@ -85,7 +88,7 @@ export class DiaryComponent implements OnInit {
       console.error(error);
     });
   }
-// todo: format date on the api
+// todo: format date on the api. Show entry in a book like format
   showEntry(entryId) {
 
     this.diaryService.getOneDiaryEntry(entryId).subscribe(response => {
@@ -133,5 +136,10 @@ export class DiaryComponent implements OnInit {
       entry: '',
       userId: ''
     };
+  }
+
+  openBook() {
+
+    this.isBookOpen = true;
   }
 }
