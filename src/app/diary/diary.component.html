@@ -1,26 +1,23 @@
 <!-- Main window -->
 <div class="diary-container">
   <div id="diary-entries" *ngIf="!this.isWrittingToDiary">
+    <div class="book back-cover" *ngIf="this.isBookOpen"></div>
     <div class="summaryPage" *ngIf="this.isBookOpen">
-      <table border="1" style="width: 100%;">
+      <table class="book-summary">
       <thead>
         <tr>
-          <th>Title</th>
-          <th>Date</th>
+          <th colspan="4">Summary</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let entry of this.diaryEntries">
-          <td class="selectable-entry" (click)="showEntry(entry.id)">{{ entry.title }}</td>
-          <td>{{ entry.dateRecorded }}</td>
-          <td><a (click)="initializeEdit(entry.id)" class="selectable-entry">Edit</a></td>
-          <td><a (click)="deleteEntry(entry.id)" class="selectable-entry">Delete</a></td>
+          <td colspan="4"><a class="selectable-entry" (click)="showEntry(entry.id)">{{ entry.title }}</a></td>
         </tr>
       </tbody>
     </table>
     </div>
     <div class="book" (click)="openBook()" [ngClass]="{'openBook': this.isBookOpen}"></div>  
-    <button (click)="writeToDiary()">Write to diary</button>
+    <!-- <button (click)="writeToDiary()" style="position: absolute; top: 500px;">Write to diary</button> -->
   </div>
   <!-- -------------------------------------------------------------------------------------- -->
   <!-- Window for creating a new diary entry -->
@@ -44,6 +41,8 @@
   <div class="entry" *ngIf="this.showEntryInModal">
     <span>{{ this.diaryEntry.entry }}</span>
     <a class="close-entry" (click)="closeOpenedEntry()">X</a>
+    <a class="edit-entry" (click)="initializeEdit(this.diaryEntry.id)">E</a>
+    <a class="delete-entry" (click)="deleteEntry(this.diaryEntry.id)">D</a>
   </div>
 </div>
 <!-- -------------------------------------------------------------------------------------------- -->

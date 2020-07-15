@@ -112,6 +112,7 @@ export class DiaryComponent implements OnInit {
       this.diaryModel = response;
       this.isWrittingToDiary = true;
       this.isEditing = true;
+      this.showEntryInModal = false;
     })
   }
 
@@ -122,6 +123,7 @@ export class DiaryComponent implements OnInit {
     this.diaryService.deleteDiaryEntry(userId, entryId).subscribe(response => {
 
       this.ngOnInit();
+      this.showEntryInModal = false;
       this.diaryNotificationService.notify('Entry deleted successfully!');
     }, error => {
       this.diaryNotificationService.notify('There was a problem deleteing the diary entry.', false);
