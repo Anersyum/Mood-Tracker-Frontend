@@ -144,4 +144,9 @@ export class DiaryComponent implements OnInit {
 
     this.isBookOpen = true;
   }
+
+  closeBook() {
+
+    this.isBookOpen = false;
+  }
 }
