@@ -1,7 +1,16 @@
 <!-- Main window -->
 <div class="diary-container">
   <div id="diary-entries" *ngIf="!this.isWrittingToDiary">
+    <!-- <div class="box">
+      <div class="box__face box__face--front">front</div>
+      <div class="box__face box__face--back">back</div>
+      <div class="box__face box__face--right">right</div>
+      <div class="box__face box__face--left">left</div>
+      <div class="box__face box__face--top">top</div>
+      <div class="box__face box__face--bottom">bottom</div>
+    </div> -->
     <div class="book back-cover" *ngIf="this.isBookOpen"></div>
+    <div class="book-paper"></div>
     <div class="summaryPage" *ngIf="this.isBookOpen">
       <table class="book-summary">
       <thead>
@@ -40,9 +49,15 @@
   <div *ngIf="this.showEntryInModal" class="show-entry" (click)="closeOpenedEntry()"></div>
   <div class="entry" *ngIf="this.showEntryInModal">
     <span>{{ this.diaryEntry.entry }}</span>
-    <a class="close-entry" (click)="closeOpenedEntry()">X</a>
-    <a class="edit-entry" (click)="initializeEdit(this.diaryEntry.id)">E</a>
-    <a class="delete-entry" (click)="deleteEntry(this.diaryEntry.id)">D</a>
+    <a class="close-entry" (click)="closeOpenedEntry()">
+      <i class="fa fa-times" aria-hidden="true"></i>
+    </a>
+    <a class="edit-entry" (click)="initializeEdit(this.diaryEntry.id)">
+      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+    </a>
+    <a class="delete-entry" (click)="deleteEntry(this.diaryEntry.id)">
+      <i class="fa fa-trash-o" aria-hidden="true"></i>
+    </a>
   </div>
 </div>
 <!-- -------------------------------------------------------------------------------------------- -->

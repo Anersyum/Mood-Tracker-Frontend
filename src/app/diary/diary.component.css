@@ -84,11 +84,12 @@
 .edit-entry {
 
     right: 30px;
+    top: 11px;
 }
 
 .delete-entry {
 
-    right: 50px;
+    right: 56px;
 }
 
 /* BOOK */
@@ -109,6 +110,17 @@
 
 .front-cover {
 
+}
+
+.book-paper {
+
+    width: 300px;
+    height: 30px;
+    background-color: white;
+    position: absolute;
+    top: 560px;
+    left: calc(50% - 150px);
+    border: 1px solid black;
 }
 
 .summaryPage, .entryPage {
