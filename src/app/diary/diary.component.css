@@ -189,7 +189,7 @@
     background-size: cover
 }
 
-.summaryPage, .entryPage {
+.summaryPage {
 
     background-color: #FBFBF8;
     background-repeat: no-repeat;
@@ -200,6 +200,31 @@
     position: absolute;
     left: 8px;
     top: 20px;
+}
+
+.summary {
+
+    width: 100%;
+    height: calc(100% - 50px)
+}
+
+.write-to-diary-container {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+}
+
+.write-to-diary-btn {
+
+    color: cadetblue;
+    cursor: pointer;
+}
+
+.write-to-diary-btn:hover {
+
+    color: darkcyan;
 }
 
 .openBook {
