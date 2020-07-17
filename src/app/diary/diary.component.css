@@ -126,7 +126,7 @@
     border-right: 0;
     border-top: 0;
     transform-style: preserve-3d;
-    transform: perspective(1000px) translateY(-10px) translateX(8.2px) rotateX(-50deg);
+    transform: perspective(1000px) translateY(-12px) translateX(8.2px) rotateX(-50deg);
 }
 
 .book-paper-side {
@@ -136,7 +136,7 @@
     border: 1px solid black;
     background-color: white;
     position: absolute;
-    top: 115.5px;
+    top: 113.5px;
     left: calc(50% + 154px);
     transform-style: preserve-3d;
     transform: perspective(1000px) rotateY(63deg);
