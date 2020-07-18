@@ -1,7 +1,8 @@
 <div class="mood-container">
   <h1>
     <span *ngIf="!this.hasMoodBeenSelected">What's your mood</span>
-    <span *ngIf="this.hasMoodBeenSelected">Your mood has been saved!</span>
+    <span *ngIf="this.hasMoodBeenSelected">Why are you feeling {{ this.mood }}? You could write it in your 
+      <a class="diary-link" (click)="goToDiarySection()">diary</a>.</span>
   </h1>
   <div class="mood-buttons-container" [ngClass]="{'hide-initial-mood-selection-home': this.hasMoodBeenSelected}">
       <button (click)="saveMood('0')">Depressed</button>

@@ -33,3 +33,14 @@
     50% { opacity: 0; }
     100% { opacity: 1; }
 }
+
+.diary-link {
+
+    color: #8ac6d1;
+    cursor: pointer;
+}
+
+.diary-link:hover {
+
+    color: #bbded6;
+}

@@ -110,21 +110,17 @@
     width: 310px;
     height: 470px;
     position: absolute;
-    /* top: 91px; */
     left: 0;
-    /* border: 1px solid black; */
 }
 
 .front-cover {
 
-    /* box-shadow: 0 2px 10px 2px black */
     transform-style: preserve-3d;
     transform: perspective(1000px);
     cursor: pointer;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    /* background-color: transparent; */
-    background-image: url("./../../assets/leather_book_cover.jpg");
+    background-image: url("./../../assets/black-cover.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -172,7 +168,7 @@
     background-color: brown;
     transform-style: preserve-3d;
     transform: perspective(1000px) rotateX(30deg) rotateZ(-30deg) translateX(8px);
-    background-image: url("./../../assets/leather_book_cover.jpg");
+    background-image: url("./../../assets/black-cover.jpg");
     background-repeat: no-repeat;
     background-size: cover
 }
@@ -184,7 +180,7 @@
     width: 9px;
     left: 0px;
     top: 20px;
-    background-image: url("./../../assets/leather_book_cover.jpg");
+    background-image: url("./../../assets/black-cover.jpg");
     background-repeat: no-repeat;
     background-size: cover
 }
@@ -239,7 +235,7 @@
     transform: perspective(1000px) translateY(20px) translateX(15px);
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    background-image: url("./../../assets/leather_book_cover.jpg");
+    background-image: url("./../../assets/black-cover.jpg");
     background-repeat: no-repeat;
     background-size: cover
 }

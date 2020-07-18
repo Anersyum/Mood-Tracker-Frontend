@@ -13,6 +13,8 @@ import { runInThisContext } from 'vm';
 export class HomeComponent implements OnInit {
 
   hasMoodBeenSelected = false;
+  mood = '';
+
   constructor(private router: Router, private userService: UserService, private moodService: MoodService) { }
 
   ngOnInit() {}
@@ -31,9 +33,26 @@ export class HomeComponent implements OnInit {
 
       console.log('do something after success. Remove the buttons perhaps? Secure the backend as well');
       this.hasMoodBeenSelected = true;
+
+      switch (moodValue) {
+        case '0':
+          this.mood = 'depressed';
+          break;
+        case '1':
+          this.mood = 'content';
+          break;
+        case '2':
+          this.mood = 'happy';
+          break;
+      }
     }, error => {
 
       console.log(error);
     });
+  }
+
+  goToDiarySection() {
+
+    this.router.navigateByUrl('/diary');
   }
 }
