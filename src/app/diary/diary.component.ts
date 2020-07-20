@@ -56,7 +56,7 @@ export class DiaryComponent implements OnInit {
     this.isWrittingToDiary = false;
   }
 
-  createDiaryEntry() {
+  onFormSubmit() {
 
     if (this.isEditing) {
       this.editDiaryEntry();
@@ -118,7 +118,7 @@ export class DiaryComponent implements OnInit {
       this.isWrittingToDiary = true;
       this.isEditing = true;
       this.showEntryInModal = false;
-    })
+    });
   }
 
   deleteEntry(entryId: number) {

@@ -30,7 +30,7 @@
   <!-- -------------------------------------------------------------------------------------- -->
   <!-- Window for creating a new diary entry -->
   <div id="create-new-diary-entry" *ngIf="this.isWrittingToDiary">
-    <form (ngSubmit)="createDiaryEntry()" #diaryEntryForm="ngForm">
+    <form (ngSubmit)="onFormSubmit()" #diaryEntryForm="ngForm">
       <label for="">Title</label>
       <br>
       <input type="text" name="title" [(ngModel)]="diaryModel.title">
