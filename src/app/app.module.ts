@@ -18,6 +18,7 @@ import { LoggedinGuard } from './_guard/loggedin.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { DiaryComponent } from './diary/diary.component';
+import { UserSearchComponent } from './user-search/user-search.component';
 
 @NgModule({
    declarations: [
@@ -29,7 +30,8 @@ import { DiaryComponent } from './diary/diary.component';
       IndexComponent,
       ProfileComponent,
       StatisticsComponent,
-      DiaryComponent
+      DiaryComponent,
+      UserSearchComponent
    ],
    imports: [
       BrowserModule,

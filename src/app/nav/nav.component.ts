@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChange } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { Router } from '@angular/router';
 import { UserService } from '../_services/user.service';
 import { fromEvent } from 'rxjs';
+import { UserSearchService } from '../_services/user-search.service';
 
 @Component({
   selector: 'app-nav',
@@ -17,8 +18,12 @@ export class NavComponent implements OnInit {
   source = fromEvent(document, 'click');
   subscription = null;
   showSearch = false;
+  searchModel = {
+    user: ''
+  };
 
-  constructor(public authService: AuthService, private router: Router, private userService: UserService) { }
+  constructor(public authService: AuthService, private router: Router,
+              private userService: UserService, private userSearchService: UserSearchService) { }
 
   ngOnInit() {}
 
@@ -43,7 +48,6 @@ export class NavComponent implements OnInit {
     return username;
   }
 
-  // make the code better because first compilation doesn't work
   dropdownMenu() {
 
     if (this.subscription) {
@@ -68,5 +72,12 @@ export class NavComponent implements OnInit {
   toggleSearchBar() {
 
     this.showSearch = !this.showSearch;
+  }
+
+  onEnterBtnSearch() {
+
+    this.router.navigateByUrl('/search?user=' + this.searchModel.user);
+    this.userSearchService.setSearchedUsers(this.searchModel);
+    this.userSearchService.userSearchResults.pressedEnter = true;
   }
 }
