@@ -35,6 +35,11 @@ export class DiaryComponent implements OnInit {
       this.clearDiaryModel();
 
       this.isEditing = false;
+
+      if (window.location.search.indexOf('openBook=true') !== -1) {
+
+        this.openBook();
+      }
     }, error => {
 
       console.error(error);

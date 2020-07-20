@@ -53,6 +53,6 @@ export class HomeComponent implements OnInit {
 
   goToDiarySection() {
 
-    this.router.navigateByUrl('/diary');
+    this.router.navigateByUrl('/diary?openBook=true');
   }
 }
