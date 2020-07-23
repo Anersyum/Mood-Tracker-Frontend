@@ -76,8 +76,16 @@ export class NavComponent implements OnInit {
 
   onEnterBtnSearch() {
 
-    this.router.navigateByUrl('/search?user=' + this.searchModel.user);
-    this.userSearchService.setSearchedUsers(this.searchModel);
-    this.userSearchService.userSearchResults.pressedEnter = true;
+    this.userSearchService.setUsername(this.searchModel.user);
+    this.userSearchService.searchUsers().subscribe((response: any) => {
+
+      console.log(response);
+      this.userSearchService.setUsersResult(response);
+      this.userSearchService.startSearch();
+      this.router.navigateByUrl('/search?user=' + this.searchModel.user);
+    }, error => {
+
+      console.error(error);
+    });
   }
 }

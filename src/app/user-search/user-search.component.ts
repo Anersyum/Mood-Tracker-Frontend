@@ -9,27 +9,24 @@ import { Router } from '@angular/router';
 })
 export class UserSearchComponent implements OnInit, DoCheck {
 
-  user = '';
+  users: any;
   constructor(private userSearchService: UserSearchService, private router: Router) { }
 
   ngDoCheck(): void {
 
-    if (this.userSearchService.getSearchedUsersResult().pressedEnter) {
+    if (this.userSearchService.hasSearchStarted()) {
 
-      this.user = this.userSearchService.getSearchedUsersResult().user;
-      this.userSearchService.userSearchResults.pressedEnter = false;
+      this.users = this.userSearchService.getSearchedUsers();
+      this.userSearchService.stopSearch();
     }
   }
 
   ngOnInit() {
 
-    if (this.userSearchService.getSearchedUsersResult().user === '') {
+    if (!this.userSearchService.hasSearchStarted()) {
 
-      this.user = this.router.parseUrl(this.router.url).queryParams.user;
-    }
-    else {
-
-      this.user = this.userSearchService.getSearchedUsersResult().user;
+      this.userSearchService.setUsername(this.router.parseUrl(this.router.url).queryParams.user);
+      this.users = 'this.userSearchService.getSearchedUsersResult()';
     }
   }
 
