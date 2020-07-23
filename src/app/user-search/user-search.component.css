@@ -20,6 +20,7 @@
     width: 100%;
     padding-right: 20px;
     font-size: 2rem;
+    padding-bottom: 30px;
 }
 
 .profile-container-left {
@@ -50,4 +51,9 @@
     border: 1px solid red;
 }
 
+.table-container-right a {
 
+    cursor: pointer;
+    color: #8ac6d1;
+    user-select: none;
+}
