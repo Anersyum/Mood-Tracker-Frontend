@@ -1,3 +1,16 @@
-<div *ngFor="let user of this.users">
-  {{ user.username }} <br>
+<div class="profile-container-left">
+  <img class="profile-image" src="https://i.pinimg.com/originals/b6/8f/39/b68f39f4821a97d11a152e42fdcf8808.jpg" alt="profile-image">
+  <div class="profile-options">
+    <a href="">Direct message</a>
+    <a href="">Add friend</a>
+  </div>
+</div>
+<div class="table-container-right">
+  <table class="searched-users-table">
+    <tbody>
+      <tr *ngFor="let user of this.users">
+        <td><a href="">@{{ user.username }}</a></td>
+      </tr>
+    </tbody>
+  </table>
 </div>

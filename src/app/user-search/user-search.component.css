@@ -1,0 +1,53 @@
+.table-container-right {
+
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    padding-top: 10px;
+    border: 1px solid blue;
+    position: absolute;
+    right: 0px;
+}
+
+.searched-users-table {
+
+    width: 100%;
+}
+
+.searched-users-table td {
+
+    text-align: center;
+    width: 100%;
+    padding-right: 20px;
+    font-size: 2rem;
+}
+
+.profile-container-left {
+
+    width: 50%;
+    position: absolute;
+    border: 1px solid green;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+}
+
+.profile-image {
+
+    width: 300px;
+    height: 300px;
+    border-radius: 100%;
+}
+
+.profile-options {
+
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    border: 1px solid red;
+}
+
+

@@ -25,8 +25,19 @@ export class UserSearchComponent implements OnInit, DoCheck {
 
     if (!this.userSearchService.hasSearchStarted()) {
 
-      this.userSearchService.setUsername(this.router.parseUrl(this.router.url).queryParams.user);
-      this.users = 'this.userSearchService.getSearchedUsersResult()';
+      const username = this.router.parseUrl(this.router.url).queryParams.user;
+
+      this.userSearchService.setUsername(username);
+      this.userSearchService.searchUsers().subscribe((response: any) => {
+  
+        console.log(response);
+        this.userSearchService.setUsersResult(response);
+        this.userSearchService.startSearch();
+        this.users = this.userSearchService.getSearchedUsers();
+      }, error => {
+  
+        console.error(error);
+      });
     }
   }
 
