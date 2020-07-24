@@ -51,9 +51,19 @@
     border: 1px solid red;
 }
 
-.table-container-right a {
+a {
 
     cursor: pointer;
     color: #8ac6d1;
     user-select: none;
+}
+a:hover {
+
+    color: gray;
+}
+
+.user-fullname {
+
+    margin-top: 10px;
+    font-size: 16pt;
 }

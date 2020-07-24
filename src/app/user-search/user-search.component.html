@@ -1,15 +1,18 @@
-<div class="profile-container-left">
+<div class="profile-container-left" *ngIf="this.showProfileInfo">
   <img class="profile-image" src="https://i.pinimg.com/originals/b6/8f/39/b68f39f4821a97d11a152e42fdcf8808.jpg" alt="profile-image">
+  <div class="user-fullname">
+    {{ this.openedUser.username }}
+  </div>
   <div class="profile-options">
-    <a href="">Direct message</a>
-    <a href="">Add friend</a>
+    <a (click)="openDMBox()">Direct message</a>
+    <a (click)="addFriend(this.openedUser.id)">Add friend</a>
   </div>
 </div>
 <div class="table-container-right">
   <table class="searched-users-table">
     <tbody>
       <tr *ngFor="let user of this.users">
-        <td><a>@{{ user.username }}</a></td>
+        <td><a (click)="getProfileInfo(user.id)">@{{ user.username }}</a></td>
       </tr>
     </tbody>
   </table>
