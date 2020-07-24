@@ -22,6 +22,8 @@ export class DiaryComponent implements OnInit {
   isEditing = false;
   isBookOpen = false;
   page = 1;
+  movingPage = false;
+  error = false;
 
   constructor(private diaryService: DiaryService, private userService: UserService,
               private diaryNotificationService: DiaryNotificationService) { }
@@ -36,13 +38,13 @@ export class DiaryComponent implements OnInit {
       this.clearDiaryModel();
 
       this.isEditing = false;
-
       if (window.location.search.indexOf('openBook=true') !== -1) {
 
         this.openBook();
       }
     }, error => {
 
+      this.error = true;
       console.error(error);
     });
   }

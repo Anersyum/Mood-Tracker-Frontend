@@ -14,21 +14,26 @@
               <th colspan="4">Summary</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody [ngClass]="{'fade-entries': this.movingPage}" *ngIf="!this.error">
             <tr *ngFor="let entry of this.diaryEntries">
               <td colspan="4"><a class="selectable-entry" (click)="showEntry(entry.id)">{{ entry.title }}</a></td>
             </tr>
           </tbody>
         </table>
+        <div class="diary-error" *ngIf="this.error">
+          <span>
+            There was and error. Please check your internet connection or contact the website administrator.
+          </span>
+        </div>
       </div>
-      <div class="page-management-container">
+      <div class="page-management-container" *ngIf="!this.error">
         <a (click)="previousPage()"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
         <a (click)="nextPage()"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
       </div>
       <div class="page-number">
         {{ this.page }}
       </div>
-      <div class="write-to-diary-container">
+      <div class="write-to-diary-container" *ngIf="!this.error">
         <a (click)="writeToDiary()" class="write-to-diary-btn">Write to diary</a>
       </div>
     </div>

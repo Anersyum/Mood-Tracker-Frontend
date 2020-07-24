@@ -67,8 +67,8 @@
     height: calc(100% - 90px);
     color: black;
     position: absolute;
-    top: 50px;
-    padding: 15px 30px;
+    top: 30px;
+    padding: 30px 30px 15px 30px;
     border-radius: 5px;
     overflow: auto;
     word-wrap: break-word;
@@ -258,7 +258,6 @@
 .book-summary td {
 
     padding: 5px 10px;
-
 }
 
 .book-summary th {
@@ -281,5 +280,31 @@
     bottom: 5px;
     right: 15px;
     color: gray;
+}
+
+.fade-entries {
+
+    animation: entriesFade 1s forwards;
+}
+
+@keyframes entriesFade {
+
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.diary-error {
+
+    color: red;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.diary-error span {
+
+    text-align: center;
 }
 /* ---------------------------------------------- */
