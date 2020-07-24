@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, DoCheck } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { UserSearchService } from '../_services/user-search.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -13,13 +13,14 @@ export class UserSearchComponent implements OnInit, DoCheck {
   users: any;
   showProfileInfo = false;
   openedUser: any;
+  isLoading = false;
 
   constructor(private userSearchService: UserSearchService, private router: Router, private http: HttpClient) { }
 
   ngDoCheck(): void {
 
     if (this.userSearchService.hasSearchStarted()) {
-
+      // we set the search parameters in the nav component
       this.users = this.userSearchService.getSearchedUsers();
       this.userSearchService.stopSearch();
     }
@@ -34,7 +35,6 @@ export class UserSearchComponent implements OnInit, DoCheck {
       this.userSearchService.setUsername(username);
       this.userSearchService.searchUsers().subscribe((response: any) => {
 
-        console.log(response);
         this.userSearchService.setUsersResult(response);
         this.userSearchService.startSearch();
         this.users = this.userSearchService.getSearchedUsers();
@@ -47,26 +47,29 @@ export class UserSearchComponent implements OnInit, DoCheck {
 
   getProfileInfo(id: number) {
 
+    this.startLoading();
     this.http.get('http://localhost:5200/api/users/get/user/' + id, {
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token')
       }
     }).subscribe((response: any) => {
 
-      console.log(response);
       this.openedUser = response;
-      this.showProfileInfo = true;
+      this.stopLoading();
+      this.showProfileInformation();
     }, error => {
 
+      this.stopLoading();
       console.error(error);
     });
   }
 
-  addFriend(friendId: number) {
+  //todo: implement this feature
+  addFriend() {
 
-    if (confirm('Want to add ' + friendId + ' to your friends list?')) {
+    if (confirm('Want to add ' + this.openedUser.username + ' to your friends list?')) {
 
-      alert('Added');
+      alert('Added user with the id of ' + this.openedUser.id);
     }
     else {
 
@@ -74,9 +77,24 @@ export class UserSearchComponent implements OnInit, DoCheck {
     }
   }
 
+  //todo: implement DM feature
   openDMBox() {
 
     alert('Create a DM box');
   }
 
+  private startLoading() {
+
+    this.isLoading = true;
+  }
+
+  private stopLoading() {
+
+    this.isLoading = false;
+  }
+
+  private showProfileInformation() {
+
+    this.showProfileInfo = true;
+  }
 }

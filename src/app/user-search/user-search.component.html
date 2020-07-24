@@ -5,7 +5,14 @@
   </div>
   <div class="profile-options">
     <a (click)="openDMBox()">Direct message</a>
-    <a (click)="addFriend(this.openedUser.id)">Add friend</a>
+    <a (click)="addFriend()">Add friend</a>
+  </div>
+  <div class="profile-loading-screen" *ngIf="this.isLoading">
+    <div class="loadingio-spinner-eclipse">
+      <div class="loading-animation">
+        <div></div>
+      </div>
+    </div>
   </div>
 </div>
 <div class="table-container-right">
