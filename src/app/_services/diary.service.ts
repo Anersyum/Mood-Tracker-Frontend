@@ -12,12 +12,12 @@ export class DiaryService {
 
   constructor(private http: HttpClient) { }
 
-  getAllUserEntries() {
+  getAllUserEntries(page: number) {
 
     const token = localStorage.getItem('token');
     const userId = this.jwtHelper.decodeToken(token).nameid;
 
-    return this.http.get(this.baseUrl + 'get/user/' + userId + ' /entries', {
+    return this.http.get(this.baseUrl + 'get/user/' + userId + ' /entries/page/' + page, {
       headers: {
         Authorization: 'Bearer ' + token
       }

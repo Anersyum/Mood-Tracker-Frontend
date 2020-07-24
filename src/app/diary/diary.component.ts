@@ -21,13 +21,14 @@ export class DiaryComponent implements OnInit {
   diaryEntry: any;
   isEditing = false;
   isBookOpen = false;
+  page = 1;
 
   constructor(private diaryService: DiaryService, private userService: UserService,
               private diaryNotificationService: DiaryNotificationService) { }
 
   ngOnInit() {
 
-    this.diaryService.getAllUserEntries().subscribe(response => {
+    this.diaryService.getAllUserEntries(this.page).subscribe(response => {
 
       this.diaryEntries = response;
 
@@ -44,6 +45,22 @@ export class DiaryComponent implements OnInit {
 
       console.error(error);
     });
+  }
+
+  nextPage() {
+
+    if (this.diaryEntries.length === 11) {
+      this.page++;
+      this.ngOnInit();
+    }
+  }
+
+  previousPage() {
+
+    if (this.page > 1) {
+      this.page--;
+      this.ngOnInit();
+    }
   }
 
   writeToDiary() {

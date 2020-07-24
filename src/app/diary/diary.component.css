@@ -212,13 +212,13 @@
     height: 44px;
 }
 
-.write-to-diary-btn {
+.write-to-diary-btn, a {
 
     color: cadetblue;
     cursor: pointer;
 }
 
-.write-to-diary-btn:hover {
+.write-to-diary-btn:hover, a:hover {
 
     color: darkcyan;
 }
@@ -264,5 +264,22 @@
 .book-summary th {
 
     padding-top: 10px;
+}
+
+.page-management-container {
+
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.page-number {
+
+    position: absolute;
+    bottom: 5px;
+    right: 15px;
+    color: gray;
 }
 /* ---------------------------------------------- */

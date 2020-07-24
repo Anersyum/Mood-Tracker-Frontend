@@ -79,7 +79,6 @@ export class NavComponent implements OnInit {
     this.userSearchService.setUsername(this.searchModel.user);
     this.userSearchService.searchUsers().subscribe((response: any) => {
 
-      console.log(response);
       this.userSearchService.setUsersResult(response);
       this.userSearchService.startSearch();
       this.router.navigateByUrl('/search?user=' + this.searchModel.user);

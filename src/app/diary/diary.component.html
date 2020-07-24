@@ -21,6 +21,13 @@
           </tbody>
         </table>
       </div>
+      <div class="page-management-container">
+        <a (click)="previousPage()"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+        <a (click)="nextPage()"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+      </div>
+      <div class="page-number">
+        {{ this.page }}
+      </div>
       <div class="write-to-diary-container">
         <a (click)="writeToDiary()" class="write-to-diary-btn">Write to diary</a>
       </div>
