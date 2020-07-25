@@ -59,6 +59,7 @@
   <!-- Modal for showing diary entry text -->
   <div *ngIf="this.showEntryInModal" class="show-entry" (click)="closeOpenedEntry()"></div>
   <div class="entry" *ngIf="this.showEntryInModal">
+    <div class="header-background"></div>
     <div class="date-written">
       <span>{{ this.diaryEntry.dateRecorded }}</span>
     </div>
