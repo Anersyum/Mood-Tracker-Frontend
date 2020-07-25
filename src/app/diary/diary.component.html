@@ -59,6 +59,9 @@
   <!-- Modal for showing diary entry text -->
   <div *ngIf="this.showEntryInModal" class="show-entry" (click)="closeOpenedEntry()"></div>
   <div class="entry" *ngIf="this.showEntryInModal">
+    <div class="date-written">
+      <span>{{ this.diaryEntry.dateRecorded }}</span>
+    </div>
     <span>{{ this.diaryEntry.entry }}</span>
     <a class="close-entry" (click)="closeOpenedEntry()">
       <i class="fa fa-times" aria-hidden="true"></i>

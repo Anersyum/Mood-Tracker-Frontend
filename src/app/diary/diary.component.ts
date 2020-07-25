@@ -33,7 +33,7 @@ export class DiaryComponent implements OnInit {
     this.diaryService.getAllUserEntries(this.page).subscribe(response => {
 
       this.diaryEntries = response;
-
+// console.log(response);
       this.cancelWrittingToDiary();
       this.clearDiaryModel();
 
