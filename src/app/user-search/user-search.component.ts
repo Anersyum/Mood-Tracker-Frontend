@@ -2,6 +2,7 @@ import { Component, OnInit, DoCheck } from '@angular/core';
 import { UserSearchService } from '../_services/user-search.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { LoadingService } from '../_services/loading.service';
 //todo: profile dropdown menu not working when this component active. Probably css positioning fault
 @Component({
   selector: 'app-user-search',
@@ -15,19 +16,23 @@ export class UserSearchComponent implements OnInit, DoCheck {
   openedUser: any;
   isLoading = false;
 
-  constructor(private userSearchService: UserSearchService, private router: Router, private http: HttpClient) { }
+  constructor(private userSearchService: UserSearchService, private router: Router, private http: HttpClient,
+              private loaderService: LoadingService) { }
 
+  //todo: check how many times doCheck is called and try to fix too many calls to speed up the app
   ngDoCheck(): void {
 
     if (this.userSearchService.hasSearchStarted()) {
       // we set the search parameters in the nav component
       this.users = this.userSearchService.getSearchedUsers();
       this.userSearchService.stopSearch();
+      this.loaderService.stopLoad();
     }
   }
 
   ngOnInit() {
 
+    this.loaderService.startLoad();
     if (!this.userSearchService.hasSearchStarted()) {
 
       const username = this.router.parseUrl(this.router.url).queryParams.user;
@@ -38,8 +43,9 @@ export class UserSearchComponent implements OnInit, DoCheck {
         this.userSearchService.setUsersResult(response);
         this.userSearchService.startSearch();
         this.users = this.userSearchService.getSearchedUsers();
+        this.loaderService.stopLoad();
       }, error => {
-
+        this.loaderService.stopLoad();
         console.error(error);
       });
     }
