@@ -6,16 +6,11 @@ import { LoadingService } from '../_services/loading.service';
   templateUrl: './loading.component.html',
   styleUrls: ['./loading.component.css']
 })
-export class LoadingComponent implements DoCheck {
+export class LoadingComponent implements OnInit {
 
-  isLoading = false;
+  constructor(public loadingService: LoadingService) { }
 
-  constructor(private loadingService: LoadingService) { }
-
-  ngDoCheck(): void {
-
-    this.isLoading = this.loadingService.isLoading();
-    console.log(this.loadingService.isLoading());
+  ngOnInit(): void {
   }
 
 }
