@@ -117,5 +117,6 @@ a:hover {
   backface-visibility: hidden;
   transform-origin: 0 0; /* see note above */
 }
+
 .loading-animation div { box-sizing: content-box; }
 /* ================================================================ */

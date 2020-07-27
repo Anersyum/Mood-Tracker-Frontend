@@ -3,5 +3,6 @@
   <google-chart class="chart" 
     *ngIf="this.showChart" [title]="this.chartTitle"
     [dynamicResize]="true"
-    [type]="this.chartType" [data]="this.chartData" [options]="this.chartOptions"></google-chart>
+    [type]="this.chartType" [data]="this.chartData" [options]="this.chartOptions" (ready)="stopLoading()">
+  </google-chart>
 </div>

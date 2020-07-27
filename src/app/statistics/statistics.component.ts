@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MoodService } from '../_services/mood.service';
 import { ChartType } from 'angular-google-charts';
+import { LoadingService } from '../_services/loading.service';
 
 @Component({
   selector: 'app-statistics',
@@ -36,9 +37,12 @@ export class StatisticsComponent implements OnInit {
     isStacked: true
   };
 
-  constructor(private moodService: MoodService) {  }
+  constructor(private moodService: MoodService, private loadingService: LoadingService) {  }
 
   ngOnInit() {
+    
+    this.loadingService.startLoad();
+
     this.moodService.getMonthlyMoods().subscribe((resp: any) => {
       this.mood = resp;
 
@@ -61,5 +65,10 @@ export class StatisticsComponent implements OnInit {
       ['Content', 0, this.content, 0],
       ['Happy', 0, 0, this.happy]
     ];
+  }
+
+  stopLoading() {
+
+    this.loadingService.stopLoad();
   }
 }

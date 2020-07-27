@@ -19,6 +19,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { DiaryComponent } from './diary/diary.component';
 import { UserSearchComponent } from './user-search/user-search.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
    declarations: [
@@ -31,7 +32,8 @@ import { UserSearchComponent } from './user-search/user-search.component';
       ProfileComponent,
       StatisticsComponent,
       DiaryComponent,
-      UserSearchComponent
+      UserSearchComponent,
+      LoadingComponent
    ],
    imports: [
       BrowserModule,
