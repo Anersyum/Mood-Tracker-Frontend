@@ -12,7 +12,10 @@ export class ProfileComponent implements OnInit {
     username: null,
     bio: null,
     dateOfBirth: null,
-    profileImage: null
+    profileImage: null,
+    firstName: null,
+    email: null,
+    lastName: null
   };
 
   constructor(private userService: UserService) { }

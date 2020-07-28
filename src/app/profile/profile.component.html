@@ -4,12 +4,30 @@
     <input type="file" name="profileImage" [(ngModel)]="model.profileImage">
   </div>
   <div class="profile-information-container">
-    <label for="username">Username:</label>
-    <input type="text" name="username" id="username" class="profile-username" [(ngModel)]="model.username">
+    <div class="full-name-container">
+      <div class="first-name-container">
+        <label for="firstName">First Name:</label>
+        <input type="text" name="firstName" id="firstName" [(ngModel)]="model.firstName">
+      </div>
+      <div class="last-name-container">
+        <label for="lastName">Last Name:</label>
+        <input type="text" name="lastName" id="lastName" [(ngModel)]="model.lastName">
+      </div>
+    </div>
+    <div class="username-and-email-container">
+      <div class="username-container">
+        <label for="username">Username:</label>
+        <input type="email" name="username" id="username" [(ngModel)]="model.username" required>
+      </div>
+      <div class="email-container">
+        <label for="email">E-mail:</label>
+        <input type="text" name="email" id="email" [(ngModel)]="model.email" required>
+      </div>
+    </div>
     <label for="birth-date">Date of birth:</label>
     <input type="date" name="dateOfBirth" [(ngModel)]="model.dateOfBirth" class="profile-birth-date">
-    <label for="bio">Tell us something about yourself:</label>
+    <label for="bio">Write something about yourself:</label>
     <textarea name="bio" id="bio" class="profile-bio" [(ngModel)]="model.bio"></textarea>
-    <button type="submit">Save</button>
+    <button type="submit" [disabled]="!editProfileForm.valid">Save</button>
   </div>
 </form>
