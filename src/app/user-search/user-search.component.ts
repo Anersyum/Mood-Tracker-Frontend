@@ -3,7 +3,7 @@ import { UserSearchService } from '../_services/user-search.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { LoadingService } from '../_services/loading.service';
-//todo: profile dropdown menu not working when this component active. Probably css positioning fault
+
 @Component({
   selector: 'app-user-search',
   templateUrl: './user-search.component.html',

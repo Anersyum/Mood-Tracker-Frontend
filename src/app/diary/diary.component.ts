@@ -33,7 +33,7 @@ export class DiaryComponent implements OnInit {
     this.diaryService.getAllUserEntries(this.page).subscribe(response => {
 
       this.diaryEntries = response;
-// console.log(response);
+
       this.cancelWrittingToDiary();
       this.clearDiaryModel();
 
@@ -112,7 +112,7 @@ export class DiaryComponent implements OnInit {
       console.error(error);
     });
   }
-// todo: format date on the api. Show entry in a book like format
+
   showEntry(entryId) {
 
     this.diaryService.getOneDiaryEntry(entryId).subscribe(response => {

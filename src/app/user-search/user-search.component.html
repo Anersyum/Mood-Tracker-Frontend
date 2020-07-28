@@ -1,27 +1,29 @@
-<!-- todo: work on design more -->
-<div class="profile-container-left" *ngIf="this.showProfileInfo">
-  <img class="profile-image" src="https://i.pinimg.com/originals/b6/8f/39/b68f39f4821a97d11a152e42fdcf8808.jpg" alt="profile-image">
-  <div class="user-fullname">
-    {{ this.openedUser.username }}
-  </div>
-  <div class="profile-options">
-    <a (click)="openDMBox()">Direct message</a>
-    <a (click)="addFriend()">Add friend</a>
-  </div>
-  <div class="profile-loading-screen" *ngIf="this.isLoading">
-    <div class="loadingio-spinner-eclipse">
-      <div class="loading-animation">
-        <div></div>
+<div class="user-search-container">
+  <!-- todo: work on design more -->
+  <div class="profile-container-left" *ngIf="this.showProfileInfo">
+    <img class="profile-image" src="https://i.pinimg.com/originals/b6/8f/39/b68f39f4821a97d11a152e42fdcf8808.jpg" alt="profile-image">
+    <div class="user-fullname">
+      {{ this.openedUser.username }}
+    </div>
+    <div class="profile-options">
+      <a (click)="openDMBox()">Direct message</a>
+      <a (click)="addFriend()">Add friend</a>
+    </div>
+    <div class="profile-loading-screen" *ngIf="this.isLoading">
+      <div class="loadingio-spinner-eclipse">
+        <div class="loading-animation">
+          <div></div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class="table-container-right">
-  <table class="searched-users-table">
-    <tbody>
-      <tr *ngFor="let user of this.users">
-        <td><a (click)="getProfileInfo(user.id)">@{{ user.username }}</a></td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-container-right">
+    <table class="searched-users-table">
+      <tbody>
+        <tr *ngFor="let user of this.users">
+          <td><a (click)="getProfileInfo(user.id)">@{{ user.username }}</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
