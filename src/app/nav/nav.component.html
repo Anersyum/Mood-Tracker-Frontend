@@ -37,7 +37,7 @@
         <div [ngClass]="{'dropdown': this.dropdown, 'hidden': !this.dropdown}">
           <ul>
             <li>
-              <a [routerLink]="['/profile']">Profile</a>
+              <a [routerLink]="['/profile']">Edit profile</a>
             </li>
             <li>
               <a *ngIf="isLoggedIn()" (click)="logout()">Logout</a>
