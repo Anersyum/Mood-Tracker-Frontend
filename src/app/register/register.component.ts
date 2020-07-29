@@ -12,13 +12,20 @@ export class RegisterComponent implements OnInit {
 
   model: any = {};
   error: any = null;
+  passwordsMatch = true;
 
   constructor(private authService: AuthService, private router: Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   register() {
+
+    if (this.model.password !== this.model.rePassword) {
+      this.passwordsMatch = false;
+      return;
+    }
+
+    this.passwordsMatch = true;
 
     this.authService.register(this.model).subscribe(() => {
 
