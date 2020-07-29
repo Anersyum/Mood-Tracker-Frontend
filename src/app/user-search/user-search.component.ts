@@ -3,6 +3,7 @@ import { UserSearchService } from '../_services/user-search.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { LoadingService } from '../_services/loading.service';
+import { UserService } from '../_services/user.service';
 
 @Component({
   selector: 'app-user-search',
@@ -15,9 +16,10 @@ export class UserSearchComponent implements OnInit, DoCheck {
   showProfileInfo = false;
   openedUser: any;
   isLoading = false;
+  loggedInUsername = '';
 
   constructor(private userSearchService: UserSearchService, private router: Router, private http: HttpClient,
-              private loaderService: LoadingService) { }
+              private loaderService: LoadingService, private userService: UserService) { }
 
   //todo: check how many times doCheck is called and try to fix too many calls to speed up the app
   ngDoCheck(): void {
@@ -32,7 +34,10 @@ export class UserSearchComponent implements OnInit, DoCheck {
 
   ngOnInit() {
 
+    this.loggedInUsername = this.userService.getUsernameFromToken(localStorage.getItem('token'));
+
     this.loaderService.startLoad();
+
     if (!this.userSearchService.hasSearchStarted()) {
 
       const username = this.router.parseUrl(this.router.url).queryParams.user;

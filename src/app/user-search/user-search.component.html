@@ -21,7 +21,7 @@
     <table class="searched-users-table">
       <tbody>
         <tr *ngFor="let user of this.users">
-          <td><a (click)="getProfileInfo(user.id)">@{{ user.username }}</a></td>
+          <td *ngIf="user.username != loggedInUsername"><a (click)="getProfileInfo(user.id)">@{{ user.username }}</a></td>
         </tr>
       </tbody>
     </table>
