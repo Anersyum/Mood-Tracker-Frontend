@@ -17,11 +17,11 @@
     <div class="username-and-email-container">
       <div class="username-container">
         <label for="username">Username:</label>
-        <input type="email" name="username" id="username" [(ngModel)]="model.username" required>
+        <input required type="text" name="username" id="username" [(ngModel)]="model.username" required>
       </div>
       <div class="email-container">
-        <label for="email">E-mail:</label>
-        <input type="text" name="email" id="email" [(ngModel)]="model.email" required>
+        <label for="email" required>E-mail:</label>
+        <input email="true" type="email" name="email" id="email" [(ngModel)]="model.email" required>
       </div>
     </div>
     <label for="birth-date">Date of birth:</label>
