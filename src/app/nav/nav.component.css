@@ -4,6 +4,7 @@
     height: 50px;
     background-color: #ffb6b9;
     margin: 0px;
+    border-bottom: 1px solid #d9adad;
 }
 
 .navigation-links {
@@ -56,11 +57,14 @@
     background-color: #e19999;
     user-select: none;
     cursor: context-menu !important;
+    border-bottom: 6px solid #383e56;
+    height: calc(100% - 6px) !important;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .navigation-bar .profile-image {
 
-    /* border: 1px solid black; */
     border-radius: 100%;
     width: 35px;
     height: 35px;
