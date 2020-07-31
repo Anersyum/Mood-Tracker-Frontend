@@ -24,8 +24,6 @@ export class MoodService {
     }).pipe(
       map((response: any) => {
         const mood = response;
-
-        console.log(mood);
       })
     );
   }

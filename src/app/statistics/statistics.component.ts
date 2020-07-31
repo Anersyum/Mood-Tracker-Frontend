@@ -40,7 +40,7 @@ export class StatisticsComponent implements OnInit {
   constructor(private moodService: MoodService, private loadingService: LoadingService) {  }
 
   ngOnInit() {
-    
+
     this.loadingService.startLoad();
 
     this.moodService.getMonthlyMoods().subscribe((resp: any) => {
@@ -55,6 +55,10 @@ export class StatisticsComponent implements OnInit {
       this.chartOptions.vAxis.viewWindow.max = (maxValue === 0) ? 1 : maxValue;
       this.chartData = this.getChartData();
       this.showChart = true;
+    }, error => {
+
+      console.error(error);
+      this.loadingService.stopLoad();
     });
   }
 

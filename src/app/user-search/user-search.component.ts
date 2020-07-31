@@ -64,7 +64,7 @@ export class UserSearchComponent implements OnInit, DoCheck {
         Authorization: 'Bearer ' + localStorage.getItem('token')
       }
     }).subscribe((response: any) => {
-
+      console.log(response)
       this.openedUser = response;
       this.stopLoading();
       this.showProfileInformation();

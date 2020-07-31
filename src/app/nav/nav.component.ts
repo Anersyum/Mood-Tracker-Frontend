@@ -59,7 +59,6 @@ export class NavComponent implements OnInit {
 
     this.subscription = this.source.subscribe((event: any) => {
 
-      console.log(event);
       if (event.target.classList.contains('profile-image') || event.target.classList.contains('dropdown')) {
         this.dropdown = true;
       }

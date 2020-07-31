@@ -30,7 +30,6 @@ export class DiaryNotificationService {
     }
 
     this.notificationStackHeight += 70;
-    console.log(this.notificationStackHeight);
     notificationContainer.style.setProperty('--notification-height', this.notificationStackHeight + 'px');
 
     document.body.appendChild(notificationContainer);
