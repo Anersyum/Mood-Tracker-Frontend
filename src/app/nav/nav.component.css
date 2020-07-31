@@ -2,7 +2,7 @@
 
     width: 100%;
     height: 50px;
-    background-color: #ffb6b9;
+    background-color: #d9adad;
     margin: 0px;
     border-bottom: 1px solid #d9adad;
 }
@@ -38,7 +38,7 @@
 
 .navigation-links a:hover {
 
-    background-color: #f5a8a8;
+    background-color: rgba(241, 197, 197, 0.7);
 }
 
 .navigation-username {
@@ -54,13 +54,15 @@
 
 .activated {
 
-    background-color: #e19999;
     user-select: none;
     cursor: context-menu !important;
-    border-bottom: 6px solid #383e56;
-    height: calc(100% - 6px) !important;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-bottom: 5px solid #979494;
+    height: calc(100% - 5px) !important;
+}
+
+.activated:hover {
+
+    background-color: #d9adad !important;
 }
 
 .navigation-bar .profile-image {
@@ -76,7 +78,7 @@
 
 .navigation-links .no-hover:hover {
 
-    background-color: #ffb6b9;
+    background-color: #d9adad;
 }
 
 /*---------------- DROPDOWN MENU -------------------*/
