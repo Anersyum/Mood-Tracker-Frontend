@@ -34,7 +34,12 @@ export class StatisticsComponent implements OnInit {
         max: 1
       },
     },
-    isStacked: true
+    isStacked: true,
+    animation: {
+      duration: 1000,
+      easing: 'out',
+      startup: true
+    }
   };
 
   constructor(private moodService: MoodService, private loadingService: LoadingService) {  }
