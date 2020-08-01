@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../_services/user.service';
+import { DiaryNotificationService } from '../_services/diaryNotification.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -18,7 +20,8 @@ export class ProfileComponent implements OnInit {
     lastName: null
   };
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private notificationService: DiaryNotificationService,
+              private router: Router) { }
   // todo: adjust date for localization
   ngOnInit() {
 
@@ -40,7 +43,17 @@ export class ProfileComponent implements OnInit {
 
   onSubmit() {
 
-    console.log(this.model);
+    this.userService.editUserInfo(this.model).subscribe((response: any) => {
+
+      this.notificationService.notify('Edited profile successfully!');
+      this.router.navigateByUrl('/home');
+    }, error => {
+
+      console.error(error);
+
+      const errorMessage = 'The profile couldn\'t be edited. Check your internet connection or contact the site administrator.'
+      this.notificationService.notify(errorMessage, false);
+    });
   }
 
 }

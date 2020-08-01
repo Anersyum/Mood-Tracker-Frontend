@@ -37,7 +37,7 @@ export class StatisticsComponent implements OnInit {
     isStacked: true,
     animation: {
       duration: 1000,
-      easing: 'out',
+      easing: 'inAndOut',
       startup: true
     }
   };
