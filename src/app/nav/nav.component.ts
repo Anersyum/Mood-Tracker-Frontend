@@ -3,7 +3,6 @@ import { AuthService } from '../_services/auth.service';
 import { Router } from '@angular/router';
 import { UserService } from '../_services/user.service';
 import { fromEvent } from 'rxjs';
-import { UserSearchService } from '../_services/user-search.service';
 import { LoadingService } from '../_services/loading.service';
 
 @Component({
@@ -24,8 +23,7 @@ export class NavComponent implements OnInit {
   };
 
   constructor(public authService: AuthService, private router: Router,
-              private userService: UserService, private userSearchService: UserSearchService,
-              private loaderService: LoadingService) { }
+              private userService: UserService, private loaderService: LoadingService) { }
 
   ngOnInit() {}
 
@@ -73,22 +71,5 @@ export class NavComponent implements OnInit {
   toggleSearchBar() {
 
     this.showSearch = !this.showSearch;
-  }
-
-  onEnterBtnSearch() {
-
-    this.loaderService.startLoad();
-
-    this.userSearchService.setUsername(this.searchModel.user);
-    this.userSearchService.searchUsers().subscribe((response: any) => {
-
-      this.userSearchService.setUsersResult(response);
-      this.userSearchService.startSearch();
-      this.router.navigateByUrl('/search?user=' + this.searchModel.user);
-      this.loaderService.stopLoad();
-    }, error => {
-      this.loaderService.stopLoad();
-      console.error(error);
-    });
   }
 }

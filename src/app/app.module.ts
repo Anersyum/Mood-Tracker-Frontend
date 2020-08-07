@@ -18,7 +18,6 @@ import { LoggedinGuard } from './_guard/loggedin.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { DiaryComponent } from './diary/diary.component';
-import { UserSearchComponent } from './user-search/user-search.component';
 import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
@@ -32,7 +31,6 @@ import { LoadingComponent } from './loading/loading.component';
       ProfileComponent,
       StatisticsComponent,
       DiaryComponent,
-      UserSearchComponent,
       LoadingComponent
    ],
    imports: [

@@ -20,16 +20,6 @@
     <li *ngIf="isLoggedIn()">
       <a [routerLink]="['/diary']" routerLinkActive="activated">Diary</a>
     </li>
-    <li *ngIf="isLoggedIn()" class="search-icon">
-      <a (click)="toggleSearchBar()"><i class="fa fa-search" aria-hidden="true"></i></a>
-    </li>
-    <li class="user-search-area" *ngIf="this.showSearch && isLoggedIn()">
-      <form (ngSubmit)="onEnterBtnSearch()" #searchForm="ngForm">
-        <input type="text" placeholder="Search user..." 
-                [ngClass]="{'search-bar': true,'expand-search-bar': this.showSearch }"
-                [(ngModel)]="searchModel.user" name="searchUser"> 
-      </form>
-    </li>
     <!-- todo: fix animation because it's a bit off -->
     <li *ngIf="isLoggedIn()" class="navigation-username">
       Welcome back {{ getLoggedInUsername() | titlecase }}!
