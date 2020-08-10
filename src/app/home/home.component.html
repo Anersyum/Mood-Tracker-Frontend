@@ -5,8 +5,10 @@
       <a class="diary-link" (click)="goToDiarySection()">diary</a>.</span>
   </h1>
   <div class="mood-buttons-container" [ngClass]="{'hide-initial-mood-selection-home': this.hasMoodBeenSelected}">
-      <button (click)="saveMood('0')">Depressed</button>
+      <!-- <button (click)="saveMood('0')">Depressed</button>
       <button (click)="saveMood('1')">Content</button>
-      <button (click)="saveMood('2')">Happy</button>
+      <button (click)="saveMood('2')">Happy</button> -->
+      <input type="text">
+      <!-- todo: add loading to multiple moods and adapt statistics -->
   </div>
 </div>
