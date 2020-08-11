@@ -40,4 +40,15 @@ export class MoodService {
     });
   }
 
+  getMoodsList(moodName: string) {
+
+    const token = localStorage.getItem('token');
+    moodName = moodName.toLowerCase();
+
+    return this.http.get(this.baseUrl + 'get/' + moodName, {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    });
+  }
 }

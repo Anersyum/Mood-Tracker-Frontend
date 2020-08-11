@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
 
   hasMoodBeenSelected = false;
   mood = '';
+  moodsList = [];
 
   constructor(private router: Router, private userService: UserService, private moodService: MoodService) { }
 
@@ -54,5 +55,21 @@ export class HomeComponent implements OnInit {
   goToDiarySection() {
 
     this.router.navigateByUrl('/diary?openBook=true');
+  }
+
+  getWords(event) {
+
+    const moodName = event.target.value;
+
+    if (moodName === '') {
+
+      return;
+    }
+
+    this.moodService.getMoodsList(moodName).subscribe((response: any) => {
+
+      console.log(response);
+      this.moodsList = response;
+    })
   }
 }
