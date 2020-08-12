@@ -13,12 +13,20 @@ import { runInThisContext } from 'vm';
 export class HomeComponent implements OnInit {
 
   hasMoodBeenSelected = false;
-  mood = '';
+  moodModel = {
+    moodName: ''
+  };
   moodsList = [];
 
   constructor(private router: Router, private userService: UserService, private moodService: MoodService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+    this.moodService.getMoodsList('empty').subscribe((response: any) => {
+
+      this.moodsList = response;
+    });
+  }
 
   saveMood(moodValue: any) {
 
@@ -34,18 +42,6 @@ export class HomeComponent implements OnInit {
 
       console.log('do something after success. Remove the buttons perhaps? Secure the backend as well');
       this.hasMoodBeenSelected = true;
-
-      switch (moodValue) {
-        case '0':
-          this.mood = 'depressed';
-          break;
-        case '1':
-          this.mood = 'content';
-          break;
-        case '2':
-          this.mood = 'happy';
-          break;
-      }
     }, error => {
 
       console.log(error);
@@ -57,19 +53,8 @@ export class HomeComponent implements OnInit {
     this.router.navigateByUrl('/diary?openBook=true');
   }
 
-  getWords(event) {
+  onSubmit() {
 
-    const moodName = event.target.value;
-
-    if (moodName === '') {
-
-      return;
-    }
-
-    this.moodService.getMoodsList(moodName).subscribe((response: any) => {
-
-      console.log(response);
-      this.moodsList = response;
-    })
+    alert(this.moodModel.moodName);
   }
 }

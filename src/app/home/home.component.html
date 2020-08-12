@@ -1,19 +1,24 @@
 <div class="mood-container">
   <h1>
     <span *ngIf="!this.hasMoodBeenSelected">What's your mood</span>
-    <span *ngIf="this.hasMoodBeenSelected">Why are you feeling {{ this.mood }}? You could write it in your 
+    <span *ngIf="this.hasMoodBeenSelected">Why are you feeling {{ this.moodModel.moodName }}? You could write it in your 
       <a class="diary-link" (click)="goToDiarySection()">diary</a>.</span>
   </h1>
   <div class="mood-buttons-container" [ngClass]="{'hide-initial-mood-selection-home': this.hasMoodBeenSelected}">
       <!-- <button (click)="saveMood('0')">Depressed</button>
       <button (click)="saveMood('1')">Content</button>
       <button (click)="saveMood('2')">Happy</button> -->
-      <input type="search" (keyup)="getWords($event)">
-      <div class="words">
-        <div *ngFor="let mood of moodsList">
+      <form (ngSubmit)="onSubmit()" #moodForm="ngForm">
+        <input list="mood-input" placeholder="Search moods" name="moodName" [(ngModel)]="moodModel.moodName">
+        <datalist id="mood-input">
+          <option *ngFor="let mood of moodsList" value="{{ mood.moodName | titlecase }}">
+        </datalist>
+      </form>
+      <!-- <div class="moods">
+        <div tabidex="0" *ngFor="let mood of moodsList" class="mood-names">
           {{ mood.moodName }}
         </div>
-      </div>
+      </div> -->
       <!-- todo: add loading to multiple moods and adapt statistics -->
   </div>
 </div>

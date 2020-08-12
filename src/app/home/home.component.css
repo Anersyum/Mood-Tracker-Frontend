@@ -8,11 +8,6 @@
     height: calc(100% - 100px);
 }
 
-.mood-buttons-container button {
-
-    margin-left: 10px;
-}
-
 .show-selected-mood-message {
 
     animation: shoWMessagePanel 2s forwards;
@@ -43,11 +38,4 @@
 .diary-link:hover {
 
     color: #bbded6;
-}
-
-.words {
-
-    width: 300px;
-    height: 200px;
-    background-color: white;
 }
