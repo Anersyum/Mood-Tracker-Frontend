@@ -32,6 +32,12 @@ export class HomeComponent implements OnInit {
     const userId = this.userService.getUserIdFromToken(localStorage.getItem('token'));
     const mood = this.moodsList.filter(x => x.moodName === this.moodModel.moodName.toLowerCase())[0];
 
+    if (!mood) {
+
+      console.log('Mood doesn\'t exist!');
+      return;
+    }
+
     const moodModel = {
       userid: userId,
       moodId: mood.id,
