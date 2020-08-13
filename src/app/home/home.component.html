@@ -8,7 +8,7 @@
       <!-- <button (click)="saveMood('0')">Depressed</button>
       <button (click)="saveMood('1')">Content</button>
       <button (click)="saveMood('2')">Happy</button> -->
-      <form (ngSubmit)="onSubmit()" #moodForm="ngForm">
+      <form (ngSubmit)="saveMood()" #moodForm="ngForm">
         <input list="mood-input" placeholder="Search moods" name="moodName" [(ngModel)]="moodModel.moodName">
         <datalist id="mood-input">
           <option *ngFor="let mood of moodsList" value="{{ mood.moodName | titlecase }}">

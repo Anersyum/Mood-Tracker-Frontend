@@ -21,11 +21,7 @@ export class MoodService {
      headers: {
       Authorization: 'Bearer ' + token
      }
-    }).pipe(
-      map((response: any) => {
-        const mood = response;
-      })
-    );
+    });
   }
 
   getMonthlyMoods() {

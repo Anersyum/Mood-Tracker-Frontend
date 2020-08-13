@@ -3,7 +3,6 @@ import { AuthService } from '../_services/auth.service';
 import { Router } from '@angular/router';
 import { UserService } from '../_services/user.service';
 import { MoodService } from '../_services/mood.service';
-import { runInThisContext } from 'vm';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +12,7 @@ import { runInThisContext } from 'vm';
 export class HomeComponent implements OnInit {
 
   hasMoodBeenSelected = false;
-  moodModel = {
+  moodModel: any = {
     moodName: ''
   };
   moodsList = [];
@@ -28,13 +27,14 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  saveMood(moodValue: any) {
+  saveMood() {
 
     const userId = this.userService.getUserIdFromToken(localStorage.getItem('token'));
+    const mood = this.moodsList.filter(x => x.moodName === this.moodModel.moodName.toLowerCase())[0];
 
     const moodModel = {
       userid: userId,
-      moodvalue: moodValue,
+      moodId: mood.id,
       token: localStorage.getItem('token')
     };
 
@@ -51,10 +51,5 @@ export class HomeComponent implements OnInit {
   goToDiarySection() {
 
     this.router.navigateByUrl('/diary?openBook=true');
-  }
-
-  onSubmit() {
-
-    alert(this.moodModel.moodName);
   }
 }
