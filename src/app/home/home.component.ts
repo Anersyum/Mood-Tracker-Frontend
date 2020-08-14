@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
     moodName: ''
   };
   moodsList = [];
+  submitted = false;
 
   constructor(private router: Router, private userService: UserService, private moodService: MoodService) { }
 
@@ -29,6 +30,8 @@ export class HomeComponent implements OnInit {
 
   saveMood() {
 
+    this.submitted = true;
+    
     const userId = this.userService.getUserIdFromToken(localStorage.getItem('token'));
     const mood = this.moodsList.filter(x => x.moodName === this.moodModel.moodName.toLowerCase())[0];
 
