@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
-    this.moodService.getMoodsList('empty').subscribe((response: any) => {
+    this.moodService.getMoodsList('all').subscribe((response: any) => {
 
       this.moodsList = response;
     });
@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
   saveMood() {
 
     this.submitted = true;
-    
+
     const userId = this.userService.getUserIdFromToken(localStorage.getItem('token'));
     const mood = this.moodsList.filter(x => x.moodName === this.moodModel.moodName.toLowerCase())[0];
 
@@ -49,10 +49,11 @@ export class HomeComponent implements OnInit {
 
     this.moodService.saveMood(moodModel).subscribe(next => {
 
-      console.log('do something after success. Remove the buttons perhaps? Secure the backend as well');
       this.hasMoodBeenSelected = true;
+      this.submitted = false;
     }, error => {
 
+      this.submitted = false;
       console.log(error);
     });
   }
