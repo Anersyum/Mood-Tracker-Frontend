@@ -29,7 +29,7 @@ export class MoodService {
     const token = localStorage.getItem('token');
     const userId = this.jwtHelper.decodeToken(token).nameid;
 
-    return this.http.get(this.baseUrl + 'get/' + userId, {
+    return this.http.get(this.baseUrl + 'get/statistics/' + userId, {
       headers: {
         Authorization: 'Bearer ' + token
       }

@@ -11,7 +11,7 @@ import { LoadingService } from '../_services/loading.service';
 })
 export class StatisticsComponent implements OnInit {
 
-  mood: any;
+  moodCount: any;
   chartType = ChartType.ColumnChart;
   depressed = 0;
   happy = 0;
@@ -20,7 +20,7 @@ export class StatisticsComponent implements OnInit {
   showChart = false;
   chartTitle = 'Mood statistics';
   chartOptions = {
-    colors: ['#745c97', '#8ac6d1', '#bd574e'],
+    colors: ['#745c97', '#8ac6d1', '#bd574e', 'red', 'green', 'yellow', 'blue', 'violet', 'pink'],
     backgroundColor: 'transparent',
     legend: 'none',
     hAxis: {
@@ -49,15 +49,12 @@ export class StatisticsComponent implements OnInit {
     this.loadingService.startLoad();
 
     this.moodService.getMonthlyMoods().subscribe((resp: any) => {
-      this.mood = resp;
 
-      this.depressed = this.mood[0];
-      this.content = this.mood[1];
-      this.happy = this.mood[2];
+      this.moodCount = resp;
+      console.log(resp);
+      // const maxValue = Math.max(...this.mood);
 
-      const maxValue = Math.max(...this.mood);
-
-      this.chartOptions.vAxis.viewWindow.max = (maxValue === 0) ? 1 : maxValue;
+      // this.chartOptions.vAxis.viewWindow.max = (maxValue === 0) ? 1 : maxValue;
       this.chartData = this.getChartData();
       this.showChart = true;
     }, error => {
@@ -69,6 +66,9 @@ export class StatisticsComponent implements OnInit {
 
   getChartData() {
 
+    const moodArray = [];
+
+    // moodArray
     return [
       ['Deppresed', this.depressed, 0, 0],
       ['Content', 0, this.content, 0],
