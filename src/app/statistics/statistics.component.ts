@@ -72,7 +72,7 @@ export class StatisticsComponent implements OnInit {
 
     for (let i = 0; i < moodArray.length; i++) {
 
-      moodArray[i][0] = this.moodCount[i].moodName;
+      moodArray[i][0] = this.moodCount[i].moodName.charAt(0).toUpperCase() + this.moodCount[i].moodName.slice(1);
       moodArray[i][i + 1] = this.moodCount[i].count;
     }
     console.log(moodArray);
