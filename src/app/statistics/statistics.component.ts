@@ -66,14 +66,16 @@ export class StatisticsComponent implements OnInit {
 
   getChartData() {
 
-    const moodArray = [];
+    const savedMoodsDistinct = this.moodCount.length;
+    const moodArray = new Array(savedMoodsDistinct).fill(0).map(() => new Array(savedMoodsDistinct + 1).fill(0));
 
-    // moodArray
-    return [
-      ['Deppresed', this.depressed, 0, 0],
-      ['Content', 0, this.content, 0],
-      ['Happy', 0, 0, this.happy]
-    ];
+    for (let i = 0; i < moodArray.length; i++) {
+
+      moodArray[i][0] = this.moodCount[i].moodName;
+      moodArray[i][i + 1] = this.moodCount[i].count;
+    }
+    console.log(moodArray);
+    return moodArray;
   }
 
   stopLoading() {
