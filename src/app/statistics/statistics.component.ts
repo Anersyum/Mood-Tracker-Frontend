@@ -51,10 +51,11 @@ export class StatisticsComponent implements OnInit {
     this.moodService.getMonthlyMoods().subscribe((resp: any) => {
 
       this.moodCount = resp;
-      console.log(resp);
-      // const maxValue = Math.max(...this.mood);
 
-      // this.chartOptions.vAxis.viewWindow.max = (maxValue === 0) ? 1 : maxValue;
+      const moodCountArray = new Array(this.moodCount.length).map((val, index) => this.moodCount[index].count);
+      const maxValue = Math.max(...moodCountArray);
+
+      this.chartOptions.vAxis.viewWindow.max = (maxValue === 0) ? 1 : maxValue;
       this.chartData = this.getChartData();
       this.showChart = true;
     }, error => {
