@@ -48,7 +48,6 @@
       <input type="text" name="title" [(ngModel)]="diaryModel.title" required>
       <br>
       <label for="diary-entry">Write something in your diary</label>
-      <!--todo: change textarea to wysiwyg -->
       <textarea name="entry" id="diary-entry" [(ngModel)]="diaryModel.entry" required></textarea>
       <button (click)="cancelWrittingToDiary()">Cancel</button>
       <button type="submit" class="create-btn" *ngIf="!this.isEditing" [disabled]="!diaryEntryForm.valid">Create</button>
