@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../_services/auth.service';
 import { Router } from '@angular/router';
+import { LoadingService } from '../_services/loading.service';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,7 @@ export class RegisterComponent implements OnInit {
   error: any = null;
   passwordsMatch = true;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private loadingService: LoadingService) { }
 
   ngOnInit() {}
 
@@ -25,13 +26,16 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
+    this.loadingService.startLoad();
     this.passwordsMatch = true;
 
     this.authService.register(this.model).subscribe(() => {
 
+      this.loadingService.stopLoad();
       this.router.navigateByUrl('/login?registerSuccess=true');
     }, error => {
 
+      this.loadingService.stopLoad();
       this.error = error;
     });
   }

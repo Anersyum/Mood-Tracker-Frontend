@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../_services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EventEmitter } from 'protractor';
+import { LoadingService } from '../_services/loading.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   registeredSuccess = false;
   loginError = false;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private loadingService: LoadingService) { }
 
   ngOnInit() {
 
@@ -29,11 +30,14 @@ export class LoginComponent implements OnInit {
       return;
     }
 
+    this.loadingService.startLoad();
+
     this.authService.login(this.model).subscribe(next => {
 
+      this.loadingService.stopLoad();
       this.router.navigateByUrl('/home');
     }, error => {
-
+      this.loadingService.stopLoad();
       if (error === 401) {
         this.loginError = true;
       }
