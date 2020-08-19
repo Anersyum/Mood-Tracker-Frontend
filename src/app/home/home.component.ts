@@ -14,14 +14,14 @@ export class HomeComponent implements OnInit {
 
   hasMoodBeenSelected = false;
   moodModel: Mood;
-  moodsList = [];
+  moodsList: Mood[];
   submitted = false;
 
   constructor(private router: Router, private userService: UserService, private moodService: MoodService) { }
 
   ngOnInit() {
 
-    this.moodService.getMoodsList('all').subscribe((response: any) => {
+    this.moodService.getMoodsList('all').subscribe((response: Mood[]) => {
 
       this.moodsList = response;
     });
