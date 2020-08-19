@@ -13,7 +13,7 @@ export class DiaryComponent implements OnInit {
 
   isWrittingToDiary = false;
   diaryModel: DiaryEntry;
-  diaryEntries: any;
+  diaryEntries: Array<DiaryEntry>;
   showEntryInModal = false;
   diaryEntry: any;
   isEditing = false;
@@ -32,7 +32,7 @@ export class DiaryComponent implements OnInit {
 
   private getAllDiaryEntries() {
 
-    this.diaryService.getAllUserEntries(this.page).subscribe(response => {
+    this.diaryService.getAllUserEntries(this.page).subscribe((response: Array<DiaryEntry>) => {
 
       this.diaryEntries = response;
 
@@ -55,7 +55,7 @@ export class DiaryComponent implements OnInit {
 
     if (this.diaryEntries.length === 11) {
       this.page++;
-      this.ngOnInit();
+      this.getAllDiaryEntries();
     }
   }
 
@@ -63,7 +63,7 @@ export class DiaryComponent implements OnInit {
 
     if (this.page > 1) {
       this.page--;
-      this.ngOnInit();
+      this.getAllDiaryEntries();
     }
   }
 
@@ -91,7 +91,7 @@ export class DiaryComponent implements OnInit {
 
   private saveDiaryEntry() {
 
-    this.diaryService.saveDiaryEntry(this.diaryModel).subscribe(response => {
+    this.diaryService.saveDiaryEntry(this.diaryModel).subscribe(() => {
 
       this.ngOnInit();
       this.clearDiaryModel();
@@ -105,7 +105,7 @@ export class DiaryComponent implements OnInit {
 
   editDiaryEntry() {
 
-    this.diaryService.editDiaryEntry(this.diaryModel).subscribe(response => {
+    this.diaryService.editDiaryEntry(this.diaryModel).subscribe(() => {
 
       this.getAllDiaryEntries();
       this.diaryNotificationService.notify('Entry edited successfully!');
@@ -138,7 +138,7 @@ export class DiaryComponent implements OnInit {
 
   initializeEdit(entryId: number) {
 
-    this.diaryService.getOneDiaryEntry(entryId).subscribe((response: any) => {
+    this.diaryService.getOneDiaryEntry(entryId).subscribe((response: DiaryEntry) => {
 
       this.diaryModel = response;
       this.isWrittingToDiary = true;
@@ -151,7 +151,7 @@ export class DiaryComponent implements OnInit {
 
     const userId = this.userService.getUserIdFromToken(localStorage.getItem('token'));
 
-    this.diaryService.deleteDiaryEntry(userId, entryId).subscribe(response => {
+    this.diaryService.deleteDiaryEntry(userId, entryId).subscribe(() => {
 
       this.getAllDiaryEntries();
       this.showEntryInModal = false;
