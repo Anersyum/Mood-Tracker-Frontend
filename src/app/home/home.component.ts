@@ -3,6 +3,7 @@ import { AuthService } from '../_services/auth.service';
 import { Router } from '@angular/router';
 import { UserService } from '../_services/user.service';
 import { MoodService } from '../_services/mood.service';
+import { Mood } from '../_models/Mood';
 
 @Component({
   selector: 'app-home',
@@ -12,9 +13,7 @@ import { MoodService } from '../_services/mood.service';
 export class HomeComponent implements OnInit {
 
   hasMoodBeenSelected = false;
-  moodModel: any = {
-    moodName: ''
-  };
+  moodModel: Mood;
   moodsList = [];
   submitted = false;
 
