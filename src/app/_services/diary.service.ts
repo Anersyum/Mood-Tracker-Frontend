@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient } from '@angular/common/http';
+import { DiaryEntry } from '../_models/DiaryEntry';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,31 +14,31 @@ export class DiaryService {
 
   constructor(private http: HttpClient) { }
 
-  getAllUserEntries(page: number) {
+  getAllUserEntries(page: number): Observable<DiaryEntry[]> {
 
     const token = localStorage.getItem('token');
     const userId = this.jwtHelper.decodeToken(token).nameid;
 
-    return this.http.get(this.baseUrl + 'get/user/' + userId + ' /entries/page/' + page, {
+    return this.http.get<DiaryEntry[]>(this.baseUrl + 'get/user/' + userId + ' /entries/page/' + page, {
       headers: {
         Authorization: 'Bearer ' + token
       }
     });
   }
 
-  getOneDiaryEntry(diaryId) {
+  getOneDiaryEntry(diaryId): Observable<DiaryEntry> {
 
     const token = localStorage.getItem('token');
     const userId = this.jwtHelper.decodeToken(token).nameid;
 
-    return this.http.get(this.baseUrl + 'get/user/' + userId + '/entry/' + diaryId, {
+    return this.http.get<DiaryEntry>(this.baseUrl + 'get/user/' + userId + '/entry/' + diaryId, {
       headers: {
         Authorization: 'Bearer ' + token
       }
     });
   }
 
-  saveDiaryEntry(diaryModel: any) {
+  saveDiaryEntry(diaryModel: DiaryEntry) {
 
     const token = localStorage.getItem('token');
 
@@ -63,7 +65,7 @@ export class DiaryService {
     });
   }
 
-  editDiaryEntry(diaryModel: any) {
+  editDiaryEntry(diaryModel: DiaryEntry) {
 
     const token = localStorage.getItem('token');
 
