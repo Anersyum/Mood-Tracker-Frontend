@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { User } from '../_models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -14,19 +16,19 @@ export class UserService {
 
   jwtHelper = new JwtHelperService();
 
-  getUsernameFromToken(token) {
+  getUsernameFromToken(token): string {
 
     return this.jwtHelper.decodeToken(token).unique_name;
   }
 
-  getUserIdFromToken(token) {
+  getUserIdFromToken(token): number {
 
     return this.jwtHelper.decodeToken(token).nameid;
   }
 
-  getLoggedInUserInfo() {
+  getLoggedInUserInfo(): Observable<User> {
 
-    return this.http.get(this.baseUrl + 'get/user/' + this.getUserIdFromToken(localStorage.getItem('token')), {
+    return this.http.get<User>(this.baseUrl + 'get/user/' + this.getUserIdFromToken(localStorage.getItem('token')), {
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token')
       }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../_services/auth.service';
 import { Router } from '@angular/router';
 import { UserService } from '../_services/user.service';
 import { MoodService } from '../_services/mood.service';
@@ -13,7 +12,9 @@ import { Mood } from '../_models/Mood';
 export class HomeComponent implements OnInit {
 
   hasMoodBeenSelected = false;
-  moodModel: Mood;
+  moodModel: Mood = {
+    moodName: ''
+  };
   moodsList: Mood[];
   submitted = false;
 
