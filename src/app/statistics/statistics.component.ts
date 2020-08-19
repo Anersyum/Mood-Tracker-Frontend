@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MoodService } from '../_services/mood.service';
 import { ChartType } from 'angular-google-charts';
 import { LoadingService } from '../_services/loading.service';
+import { MoodStatistic } from '../_models/MoodStatistic';
 
 @Component({
   selector: 'app-statistics',
@@ -10,7 +11,7 @@ import { LoadingService } from '../_services/loading.service';
 })
 export class StatisticsComponent implements OnInit {
 
-  moodCount: any;
+  moodCount: Array<MoodStatistic>;
   chartType = ChartType.ColumnChart;
   chartData: any;
   showChart = false;
@@ -47,6 +48,13 @@ export class StatisticsComponent implements OnInit {
 
   getChartData() {
 
+    const moodArray = this.fillArrayWithMoodStatistics();
+
+    return moodArray;
+  }
+
+  private fillArrayWithMoodStatistics() {
+
     const savedMoodsDistinct = this.moodCount.length;
     const moodArray = new Array(savedMoodsDistinct).fill(0).map(() => new Array(savedMoodsDistinct + 1).fill(0));
 
@@ -55,7 +63,7 @@ export class StatisticsComponent implements OnInit {
       moodArray[i][0] = this.moodCount[i].moodName.charAt(0).toUpperCase() + this.moodCount[i].moodName.slice(1);
       moodArray[i][i + 1] = this.moodCount[i].count;
     }
-    console.log(moodArray);
+
     return moodArray;
   }
 
@@ -81,7 +89,7 @@ export class StatisticsComponent implements OnInit {
     }, error => {
 
       console.error(error);
-      this.loadingService.stopLoad();
+      this.stopLoading();
     });
   }
 }
