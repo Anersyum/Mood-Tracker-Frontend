@@ -122,7 +122,7 @@ export class DiaryComponent implements OnInit {
 
   showEntry(entryId) {
 
-    this.diaryService.getOneDiaryEntry(entryId).subscribe(response => {
+    this.diaryService.getOneDiaryEntry(entryId).subscribe((response: DiaryEntry) => {
 
       this.diaryEntry = response;
       this.showEntryInModal = true;
