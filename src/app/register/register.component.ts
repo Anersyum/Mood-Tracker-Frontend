@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../_services/auth.service';
 import { Router } from '@angular/router';
 import { LoadingService } from '../_services/loading.service';
+import { User } from '../_models/User';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +11,7 @@ import { LoadingService } from '../_services/loading.service';
 })
 export class RegisterComponent implements OnInit {
 
-  model: any = {};
+  model: User;
   error: any = null;
   passwordsMatch = true;
 

@@ -1,9 +1,8 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { EventEmitter } from 'protractor';
+import { Router } from '@angular/router';
 import { LoadingService } from '../_services/loading.service';
+import { User } from '../_models/User';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +11,7 @@ import { LoadingService } from '../_services/loading.service';
 })
 export class LoginComponent implements OnInit {
 
-  model: any = {};
+  model: User;
   registeredSuccess = false;
   loginError = false;
 

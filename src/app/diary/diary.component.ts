@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DiaryService } from '../_services/diary.service';
 import { UserService } from '../_services/user.service';
 import { DiaryNotificationService } from '../_services/diaryNotification.service';
+import { DiaryEntry } from '../_models/DiaryEntry';
 
 @Component({
   selector: 'app-diary',
@@ -11,11 +12,7 @@ import { DiaryNotificationService } from '../_services/diaryNotification.service
 export class DiaryComponent implements OnInit {
 
   isWrittingToDiary = false;
-  diaryModel = {
-    title: '',
-    entry: '',
-    userId: ''
-  };
+  diaryModel: DiaryEntry;
   diaryEntries: any;
   showEntryInModal = false;
   diaryEntry: any;
@@ -160,7 +157,7 @@ export class DiaryComponent implements OnInit {
     this.diaryModel = {
       title: '',
       entry: '',
-      userId: ''
+      userId: null
     };
   }
 
