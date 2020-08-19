@@ -27,6 +27,11 @@ export class DiaryComponent implements OnInit {
 
   ngOnInit() {
 
+    this.getAllDiaryEntries();
+  }
+
+  private getAllDiaryEntries() {
+
     this.diaryService.getAllUserEntries(this.page).subscribe(response => {
 
       this.diaryEntries = response;
@@ -81,6 +86,11 @@ export class DiaryComponent implements OnInit {
 
     this.diaryModel.userId = this.userService.getUserIdFromToken(localStorage.getItem('token'));
 
+    this.saveDiaryEntry();
+  }
+
+  private saveDiaryEntry() {
+
     this.diaryService.saveDiaryEntry(this.diaryModel).subscribe(response => {
 
       this.ngOnInit();
@@ -97,7 +107,7 @@ export class DiaryComponent implements OnInit {
 
     this.diaryService.editDiaryEntry(this.diaryModel).subscribe(response => {
 
-      this.ngOnInit();
+      this.getAllDiaryEntries();
       this.diaryNotificationService.notify('Entry edited successfully!');
 
       this.isEditing = false;
@@ -143,7 +153,7 @@ export class DiaryComponent implements OnInit {
 
     this.diaryService.deleteDiaryEntry(userId, entryId).subscribe(response => {
 
-      this.ngOnInit();
+      this.getAllDiaryEntries();
       this.showEntryInModal = false;
       this.diaryNotificationService.notify('Entry deleted successfully!');
     }, error => {
