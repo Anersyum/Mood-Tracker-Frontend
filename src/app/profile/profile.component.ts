@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SecurityContext } from '@angular/core';
 import { UserService } from '../_services/user.service';
 import { DiaryNotificationService } from '../_services/diaryNotification.service';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
@@ -14,18 +16,21 @@ export class ProfileComponent implements OnInit {
     username: null,
     bio: null,
     dateOfBirth: null,
-    profileImage: null,
+    profileImage: File = null,
     firstName: null,
     email: null,
-    lastName: null
+    lastName: null,
+    profileImagePath: ''
   };
-
+  profileImagePath: SafeUrl = 'https://res.cloudinary.com/cook-becker/image/fetch/q_auto:best,f_auto,w_380,h_380,c_fill,g_north,e_sharpen/https://candb.com/site/candb/images/artwork/Joker_Persona-5_Atlus_1920.jpg';
   constructor(private userService: UserService, private notificationService: DiaryNotificationService,
-              private router: Router) { }
+              private router: Router, private sanitizer: DomSanitizer) { }
   // todo: adjust date for localization
   ngOnInit() {
 
     this.userService.getLoggedInUserInfo().subscribe((response: any) => {
+
+      console.log(response);
       this.model = response;
 
       const date = this.model.dateOfBirth.split('/');
@@ -34,6 +39,10 @@ export class ProfileComponent implements OnInit {
       const year = date[2];
 
       this.model.dateOfBirth = year + '-' + month + '-' + day;
+      if (this.model.profileImagePath !== '') {
+
+        this.profileImagePath = this.sanitizer.bypassSecurityTrustUrl(this.model.profileImagePath);
+      }
     }, error => {
 
       alert('There has been an error.');
@@ -41,9 +50,12 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onSubmit(image: HTMLFormElement) {
 
-    this.userService.editUserInfo(this.model).subscribe((response: any) => {
+    console.log(image);
+    // this.model.profileImage = image.files[0];
+
+    this.userService.editUserInfo(image).subscribe((response: any) => {
 
       this.notificationService.notify('Edited profile successfully!');
       this.router.navigateByUrl('/home');
@@ -56,4 +68,9 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  handleFileUpload(files: FileList, form: NgForm) {
+
+    this.model.profileImage = files.item(0);
+    form.control.markAsDirty();
+  }
 }

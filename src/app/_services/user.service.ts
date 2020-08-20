@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { User } from '../_models/User';
+import { NgForm } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -35,12 +36,15 @@ export class UserService {
     });
   }
 
-  editUserInfo(userModel: any) {
+  editUserInfo(form: HTMLFormElement) {
 
-    return this.http.post(this.baseUrl + 'edit/user', userModel, {
+    const formData = new FormData(form);
+    formData.append('id', this.getUserIdFromToken(localStorage.getItem('token')).toString());
+    
+    return this.http.post(this.baseUrl + 'edit/user', formData, {
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token')
-      }
+      },
     }).pipe(
       map((response: any) => {
 

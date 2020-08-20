@@ -11,7 +11,12 @@ import { User } from '../_models/User';
 })
 export class LoginComponent implements OnInit {
 
-  model: User;
+  model: User = {
+    username: '',
+    password: '',
+    rePassword: '',
+    email: '',
+  };
   registeredSuccess = false;
   loginError = false;
 

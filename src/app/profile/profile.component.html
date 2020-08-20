@@ -1,7 +1,7 @@
-<form class="profile-form-container" (ngSubmit)="onSubmit()" #editProfileForm="ngForm" enctype="multipart/form-data">
+<form class="profile-form-container" (ngSubmit)="onSubmit(profileForm)" #profileForm #editProfileForm="ngForm" enctype="multipart/form-data">
   <div class="profile-image-container">
-    <img class="profile-image" src="https://i.pinimg.com/originals/b6/8f/39/b68f39f4821a97d11a152e42fdcf8808.jpg">  
-    <input type="file" name="profileImage" [(ngModel)]="model.profileImage">
+    <img class="profile-image" [src]="profileImagePath">  
+    <input type="file" name="profileImage" #image>
   </div>
   <div class="profile-information-container">
     <div class="full-name-container">
@@ -11,7 +11,7 @@
       </div>
       <div class="last-name-container">
         <label for="lastName">Last Name:</label>
-        <input type="text" name="lastName" id="lastName" [(ngModel)]="model.lastName">
+        <input type="text" name="lastName" id="lastName" [(ngModel)]="model.lastName">  
       </div>
     </div>
     <div class="username-and-email-container">
@@ -28,6 +28,6 @@
     <input type="date" name="dateOfBirth" [(ngModel)]="model.dateOfBirth" class="profile-birth-date">
     <label for="bio">Write something about yourself:</label>
     <textarea name="bio" id="bio" class="profile-bio" [(ngModel)]="model.bio"></textarea>
-    <button type="submit" [disabled]="!editProfileForm.valid">Save</button>
+    <button type="submit" [disabled]="!editProfileForm.valid || !editProfileForm.dirty">Save</button>
   </div>
 </form>

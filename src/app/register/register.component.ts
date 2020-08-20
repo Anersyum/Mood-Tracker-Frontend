@@ -11,7 +11,15 @@ import { User } from '../_models/User';
 })
 export class RegisterComponent implements OnInit {
 
-  model: User;
+  model: User = {
+    username: '',
+    password: '',
+    rePassword: '',
+    email: '',
+    firstName: '',
+    lastName: '',
+    dateOfBirth: ''
+  };
   error: any = null;
   passwordsMatch = true;
 
