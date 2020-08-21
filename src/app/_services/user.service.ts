@@ -36,11 +36,16 @@ export class UserService {
     });
   }
 
+  getProfileImage(): string {
+
+    return this.jwtHelper.decodeToken(localStorage.getItem('token')).profile_pic;
+  }
+
   editUserInfo(form: HTMLFormElement) {
 
     const formData = new FormData(form);
     formData.append('id', this.getUserIdFromToken(localStorage.getItem('token')).toString());
-    
+
     return this.http.post(this.baseUrl + 'edit/user', formData, {
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token')

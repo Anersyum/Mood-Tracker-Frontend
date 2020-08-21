@@ -41,7 +41,10 @@ export class ProfileComponent implements OnInit {
       this.model.dateOfBirth = year + '-' + month + '-' + day;
       if (this.model.profileImagePath !== '') {
 
-        this.profileImagePath = this.sanitizer.bypassSecurityTrustUrl(this.model.profileImagePath);
+        this.profileImagePath = this.sanitizer.bypassSecurityTrustUrl('http://localhost:5200/api/users/user/' 
+          + this.userService.getUserIdFromToken(localStorage.getItem('token')) 
+          + '/' 
+          + this.model.profileImagePath);
       }
     }, error => {
 

@@ -21,11 +21,18 @@ export class NavComponent implements OnInit {
   searchModel = {
     user: ''
   };
+  profilePic: string = 'https://res.cloudinary.com/cook-becker/image/fetch/q_auto:best,f_auto,w_380,h_380,c_fill,g_north,e_sharpen/https://candb.com/site/candb/images/artwork/Joker_Persona-5_Atlus_1920.jpg';
 
   constructor(public authService: AuthService, private router: Router,
               private userService: UserService, private loaderService: LoadingService) { }
 
-  ngOnInit() {}
+    //todo make change picture on navbar
+  ngOnInit() {
+
+    const id = this.userService.getUserIdFromToken(localStorage.getItem('token'));
+
+    this.profilePic = 'http://localhost:5200/api/users/user/' + id + '/' + this.userService.getProfileImage();
+  }
 
   logout() {
 
