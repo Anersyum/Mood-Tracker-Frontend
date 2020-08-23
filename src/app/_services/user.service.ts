@@ -12,6 +12,7 @@ import { NgForm } from '@angular/forms';
 export class UserService {
 
   baseUrl = 'http://localhost:5200/api/users/';
+  userProfileImage: string;
 
   constructor(private http: HttpClient) { }
 
@@ -36,9 +37,12 @@ export class UserService {
     });
   }
 
-  getProfileImage(): string {
+  setProfileImage(): void {
 
-    return this.jwtHelper.decodeToken(localStorage.getItem('token')).profile_pic;
+    const id = this.getUserIdFromToken(localStorage.getItem('token'));
+    const imageName = this.jwtHelper.decodeToken(localStorage.getItem('token')).profile_pic;
+
+    this.userProfileImage = this.baseUrl + 'user/' + id + '/' + imageName;
   }
 
   editUserInfo(form: HTMLFormElement) {

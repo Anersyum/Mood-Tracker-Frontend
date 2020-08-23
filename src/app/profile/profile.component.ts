@@ -22,7 +22,7 @@ export class ProfileComponent implements OnInit {
     lastName: null,
     profileImagePath: ''
   };
-  profileImagePath: SafeUrl = 'https://res.cloudinary.com/cook-becker/image/fetch/q_auto:best,f_auto,w_380,h_380,c_fill,g_north,e_sharpen/https://candb.com/site/candb/images/artwork/Joker_Persona-5_Atlus_1920.jpg';
+  profileImagePath: SafeUrl;
   constructor(private userService: UserService, private notificationService: DiaryNotificationService,
               private router: Router, private sanitizer: DomSanitizer) { }
   // todo: adjust date for localization
@@ -30,7 +30,6 @@ export class ProfileComponent implements OnInit {
 
     this.userService.getLoggedInUserInfo().subscribe((response: any) => {
 
-      console.log(response);
       this.model = response;
 
       const date = this.model.dateOfBirth.split('/');
@@ -39,13 +38,7 @@ export class ProfileComponent implements OnInit {
       const year = date[2];
 
       this.model.dateOfBirth = year + '-' + month + '-' + day;
-      if (this.model.profileImagePath !== '') {
-
-        this.profileImagePath = this.sanitizer.bypassSecurityTrustUrl('http://localhost:5200/api/users/user/' 
-          + this.userService.getUserIdFromToken(localStorage.getItem('token')) 
-          + '/' 
-          + this.model.profileImagePath);
-      }
+      this.profileImagePath = this.sanitizer.bypassSecurityTrustUrl(this.userService.userProfileImage);
     }, error => {
 
       alert('There has been an error.');
@@ -53,14 +46,12 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  onSubmit(image: HTMLFormElement) {
+  onSubmit(form: HTMLFormElement) {
 
-    console.log(image);
-    // this.model.profileImage = image.files[0];
-
-    this.userService.editUserInfo(image).subscribe((response: any) => {
+    this.userService.editUserInfo(form).subscribe((response: any) => {
 
       this.notificationService.notify('Edited profile successfully!');
+      this.userService.setProfileImage();
       this.router.navigateByUrl('/home');
     }, error => {
 
@@ -71,9 +62,8 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  handleFileUpload(files: FileList, form: NgForm) {
+  approveForm(form: NgForm) {
 
-    this.model.profileImage = files.item(0);
     form.control.markAsDirty();
   }
 }

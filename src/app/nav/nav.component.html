@@ -23,7 +23,8 @@
     <!-- todo: fix animation because it's a bit off -->
     <li *ngIf="isLoggedIn()" class="navigation-username">
       Welcome back {{ getLoggedInUsername() | titlecase }}!
-      <div [ngStyle]="{'background-image': 'url(' + profilePic + ')'}" class="profile-image" (click)="dropdownMenu()">
+      <div class="profile-image" (click)="dropdownMenu()">
+        <img class="profile-image" [src]="userService.userProfileImage" alt="">
         <div [ngClass]="{'dropdown': this.dropdown, 'hidden': !this.dropdown}">
           <ul>
             <li>
