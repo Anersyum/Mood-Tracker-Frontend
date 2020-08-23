@@ -23,7 +23,6 @@ export class NavComponent implements OnInit {
   constructor(public authService: AuthService, private router: Router,
               public userService: UserService) { }
 
-    //todo make change picture on navbar
   ngOnInit() {
 
     this.userService.setProfileImage();
