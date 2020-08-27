@@ -48,20 +48,25 @@
     100% { opacity: 1; }
 }
 
-.entry-title, .entry-buttons {
+.entry-title, .entry-buttons, .entry-content {
 
     margin-top: -100px;
     opacity: 0;
 }
 
-.entry-title {
+.slide-in {
 
     animation: slideEntryForm 0.5s 0.2s forwards;
 }
 
-.entry-buttons {
+.slide-in-buttons {
 
     animation: slideEntryForm 0.5s 0.1s forwards;
+}
+
+.slide-out {
+
+    animation: slideOutEntryForm 0.5s forwards;
 }
 
 @keyframes slideEntryForm {
@@ -69,6 +74,18 @@
     100% {
         opacity: 1;
         margin-top: 0;
+    }
+}
+
+@keyframes slideOutEntryForm {
+
+    0% {
+        opacity: 1;
+        margin-top: 0;
+    }
+    100% {
+        opacity: 0;
+        margin-top: -100px;
     }
 }
 
@@ -80,7 +97,16 @@
 #diary-entry {
 
     margin-top: 10px;
-    height: 300px;
+    height: 0;
+    width: 400px;
+    animation: expand 0.5s 0.4s forwards;
+}
+
+@keyframes expand {
+
+    100% {
+        height: 300px;
+    }
 }
 
 .date-written {

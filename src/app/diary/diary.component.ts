@@ -22,6 +22,7 @@ export class DiaryComponent implements OnInit {
   movingPage = false;
   error = false;
   titleSection = true;
+  nextSection = false;
 
   constructor(private diaryService: DiaryService, private userService: UserService,
               private diaryNotificationService: DiaryNotificationService) { }
@@ -77,6 +78,7 @@ export class DiaryComponent implements OnInit {
 
     this.isWrittingToDiary = false;
     this.titleSection = true;
+    this.nextSection = false;
   }
 
   onFormSubmit() {
@@ -187,6 +189,9 @@ export class DiaryComponent implements OnInit {
 
   changeSection() {
 
-    this.titleSection = false;
+    setTimeout(() => {
+      this.titleSection = false;
+    }, 600);
+    this.nextSection = true;
   }
 }

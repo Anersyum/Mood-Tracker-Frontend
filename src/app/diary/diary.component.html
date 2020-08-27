@@ -43,15 +43,15 @@
   <!-- Window for creating a new diary entry -->
   <div id="create-new-diary-entry" *ngIf="this.isWrittingToDiary">
     <form (ngSubmit)="onFormSubmit()" #diaryEntryForm="ngForm" class="create-new-entry-modal">
-      <div class="entry-title" *ngIf="this.titleSection">
+      <div class="entry-title" [ngClass]="{'slide-out': this.nextSection, 'slide-in': !this.nextSection}" *ngIf="this.titleSection">
         <h2 style="color: white; text-align: center;">Title</h2>
         <input type="text" name="title" [(ngModel)]="diaryModel.title" required>
       </div>
-      <div class="entry-content" *ngIf="!this.titleSection">
+      <div class="entry-content slide-in" *ngIf="!this.titleSection">
         <h2 style="color: white; text-align: center;">Content</h2>
         <textarea name="entry" id="diary-entry" [(ngModel)]="diaryModel.entry" required></textarea>
       </div>
-      <div class="entry-buttons">
+      <div class="entry-buttons slide-in-buttons">
         <button (click)="cancelWrittingToDiary()">Cancel</button>
         <button type="submit" class="create-btn" *ngIf="!this.isEditing && !this.titleSection" [disabled]="!diaryEntryForm.valid">Create</button>
         <button type="submit" class="create-btn" *ngIf="this.isEditing && !this.titleSection" [disabled]="!diaryEntryForm.valid && !diaryEntryForm.dirty">Edit</button>
