@@ -21,6 +21,7 @@ export class DiaryComponent implements OnInit {
   page = 1;
   movingPage = false;
   error = false;
+  titleSection = true;
 
   constructor(private diaryService: DiaryService, private userService: UserService,
               private diaryNotificationService: DiaryNotificationService) { }
@@ -75,6 +76,7 @@ export class DiaryComponent implements OnInit {
   cancelWrittingToDiary() {
 
     this.isWrittingToDiary = false;
+    this.titleSection = true;
   }
 
   onFormSubmit() {
@@ -87,13 +89,14 @@ export class DiaryComponent implements OnInit {
     this.diaryModel.userId = this.userService.getUserIdFromToken(localStorage.getItem('token'));
 
     this.saveDiaryEntry();
+    this.titleSection = true;
   }
 
   private saveDiaryEntry() {
 
     this.diaryService.saveDiaryEntry(this.diaryModel).subscribe(() => {
 
-      this.ngOnInit();
+      this.getAllDiaryEntries();
       this.clearDiaryModel();
 
       this.diaryNotificationService.notify('Created entry successfully!');
@@ -165,6 +168,7 @@ export class DiaryComponent implements OnInit {
   clearDiaryModel() {
 
     this.diaryModel = {
+      id: null,
       title: '',
       entry: '',
       userId: null
@@ -179,5 +183,10 @@ export class DiaryComponent implements OnInit {
   closeBook() {
 
     this.isBookOpen = false;
+  }
+
+  changeSection() {
+
+    this.titleSection = false;
   }
 }

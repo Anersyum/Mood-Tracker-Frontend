@@ -21,7 +21,55 @@
 
 #create-new-diary-entry {
 
-    width: 70%;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: shadowFadeIn 0.5s forwards;
+    opacity: 0;
+}
+
+.create-new-entry-modal {
+
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+}
+
+@keyframes shadowFadeIn {
+
+    100% { opacity: 1; }
+}
+
+.entry-title, .entry-buttons {
+
+    margin-top: -100px;
+    opacity: 0;
+}
+
+.entry-title {
+
+    animation: slideEntryForm 0.5s 0.2s forwards;
+}
+
+.entry-buttons {
+
+    animation: slideEntryForm 0.5s 0.1s forwards;
+}
+
+@keyframes slideEntryForm {
+
+    100% {
+        opacity: 1;
+        margin-top: 0;
+    }
 }
 
 #create-new-diary-entry .create-btn {
