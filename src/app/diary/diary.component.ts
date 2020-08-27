@@ -190,8 +190,8 @@ export class DiaryComponent implements OnInit {
   changeSection() {
 
     setTimeout(() => {
-      this.titleSection = false;
-    }, 600);
-    this.nextSection = true;
+      this.titleSection = !this.titleSection;
+    }, 490);
+    this.nextSection = !this.nextSection;
   }
 }
