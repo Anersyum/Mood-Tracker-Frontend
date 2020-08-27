@@ -42,6 +42,8 @@ export class DiaryService {
 
     const token = localStorage.getItem('token');
 
+    delete diaryModel.id;
+
     return this.http.post(this.baseUrl + 'save', diaryModel, {
       headers: {
         Authorization: 'Bearer ' + token
