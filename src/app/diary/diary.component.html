@@ -43,11 +43,11 @@
   <!-- Window for creating a new diary entry -->
   <div id="create-new-diary-entry" *ngIf="this.isWrittingToDiary">
     <form (ngSubmit)="onFormSubmit()" #diaryEntryForm="ngForm" class="create-new-entry-modal">
-      <div class="entry-title" [ngClass]="{'slide-out': this.nextSection, 'slide-in': !this.nextSection}" *ngIf="this.titleSection">
+      <div class="entry-title" [ngClass]="{'slide-out': this.nextSection, 'slide-in': !this.nextSection}" [hidden]="!this.titleSection">
         <h2 style="color: white; text-align: center;">Title</h2>
         <input type="text" name="title" [(ngModel)]="diaryModel.title" required>
       </div>
-      <div class="entry-content" [ngClass]="{'slide-out': !this.nextSection, 'slide-in': this.nextSection}" *ngIf="!this.titleSection">
+      <div class="entry-content" [ngClass]="{'slide-out': !this.nextSection, 'slide-in': this.nextSection}" [hidden]="this.titleSection">
         <h2 style="color: white; text-align: center;">Content</h2>
         <textarea [ngClass]="{'contract': !this.nextSection, 'expand': this.nextSection}" name="entry" id="diary-entry" [(ngModel)]="diaryModel.entry" required></textarea>
       </div>

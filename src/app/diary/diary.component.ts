@@ -79,6 +79,7 @@ export class DiaryComponent implements OnInit {
     this.isWrittingToDiary = false;
     this.titleSection = true;
     this.nextSection = false;
+    this.clearDiaryModel();
   }
 
   onFormSubmit() {
@@ -91,7 +92,6 @@ export class DiaryComponent implements OnInit {
     this.diaryModel.userId = this.userService.getUserIdFromToken(localStorage.getItem('token'));
 
     this.saveDiaryEntry();
-    this.titleSection = true;
   }
 
   private saveDiaryEntry() {
