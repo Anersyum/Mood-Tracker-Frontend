@@ -84,8 +84,6 @@ export class DiaryComponent implements OnInit {
 
   onFormSubmit() {
 
-    // this.prepareText();
-
     if (this.isEditing) {
       this.editDiaryEntry();
       return;
@@ -94,11 +92,6 @@ export class DiaryComponent implements OnInit {
     this.diaryModel.userId = this.userService.getUserIdFromToken(localStorage.getItem('token'));
 
     this.saveDiaryEntry();
-  }
-
-  private prepareText() {
-
-    this.diaryModel.entry = this.diaryModel.entry.replace(/(?:\r\n|\r|\n)/g, '<br>');
   }
 
   private saveDiaryEntry() {
