@@ -62,8 +62,15 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  approveForm(form: NgForm) {
+  approveForm(form: NgForm, me) {
 
-    form.control.markAsDirty();
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      this.profileImagePath = e.target.result;
+      form.control.markAsDirty();
+    }
+
+    reader.readAsDataURL(me.target.files[0]);
   }
 }
