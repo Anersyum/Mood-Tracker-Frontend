@@ -64,6 +64,12 @@ export class ProfileComponent implements OnInit {
 
   approveForm(form: NgForm, me) {
 
+    if (!this.userService.isValidImage(me.target.files[0])) {
+
+      this.notificationService.notify('That format isn\'t supported', false);
+      return;
+    }
+
     const reader = new FileReader();
 
     reader.onload = (e) => {

@@ -13,6 +13,7 @@ export class UserService {
 
   baseUrl = 'http://localhost:5200/api/users/';
   userProfileImage: string;
+  approvedImageTypes = ['jpg', 'jpeg', 'png'];
 
   constructor(private http: HttpClient) { }
 
@@ -66,5 +67,12 @@ export class UserService {
         }
       })
     );
+  }
+
+  isValidImage(file: File): boolean {
+
+    const type = file.type.split('/')[1];
+
+    return this.approvedImageTypes.includes(type.toLowerCase());
   }
 }
