@@ -62,7 +62,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  approveForm(form: NgForm, me) {
+  approveForm(form: NgForm, me, fileName: HTMLLabelElement) {
 
     if (!this.userService.isValidImage(me.target.files[0])) {
 
@@ -74,6 +74,7 @@ export class ProfileComponent implements OnInit {
 
     reader.onload = (e) => {
       this.profileImagePath = e.target.result;
+      fileName.innerText = me.target.files[0].name;
       form.control.markAsDirty();
     }
 

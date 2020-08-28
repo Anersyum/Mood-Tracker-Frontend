@@ -1,7 +1,11 @@
 <form class="profile-form-container" (ngSubmit)="onSubmit(profileForm)" #profileForm #editProfileForm="ngForm" enctype="multipart/form-data">
   <div class="profile-image-container">
-    <img class="profile-image" [src]="profileImagePath">  
-    <input type="file" name="profileImage" (change)="approveForm(editProfileForm, $event)">
+    <img class="profile-image" [src]="profileImagePath"> 
+    <div class="file-upload-button-container">
+      <label for="file-upload" class="file-upload-btn">Upload</label>
+      <label #fileName for="file-upload" class="file-name"></label>
+    </div>
+    <input [hidden]="true" id="file-upload" type="file" name="profileImage" (change)="approveForm(editProfileForm, $event, fileName)">
   </div>
   <div class="profile-information-container">
     <div class="full-name-container">

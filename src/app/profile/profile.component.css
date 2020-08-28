@@ -60,3 +60,47 @@
 
     width: 50%;
 }
+
+.file-upload-button-container {
+
+    display: flex;
+    flex-flow: row;
+    margin-top: 10px;
+    width: calc(100% + 50px);
+    margin-left: -25px;
+    height: 35px;
+}
+
+.file-upload-button-container:active {
+
+    border: 1px solid gray;
+}
+
+.file-name {
+
+    border: 1px solid #000000;
+    width: 70%;
+    background-color: #ffffff;
+    cursor: pointer;
+    display: block;
+    padding: 7px 2px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 10pt;
+}
+
+.file-upload-btn {
+
+    background-color: #8ac6d1;
+    padding: 8px 20px;
+    text-align: center;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 10pt;
+}
+
+.file-upload-btn:hover {
+
+    background-color: #bbded6;
+}
