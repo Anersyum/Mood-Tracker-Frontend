@@ -68,7 +68,7 @@
     <div class="date-written">
       <span>{{ this.diaryEntry.dateRecorded }}</span>
     </div>
-    <span>{{ this.diaryEntry.entry }}</span>
+    <textarea readonly>{{ this.diaryEntry.entry }}</textarea>
     <a class="close-entry" (click)="closeOpenedEntry()">
       <i class="fa fa-times" aria-hidden="true"></i>
     </a>
