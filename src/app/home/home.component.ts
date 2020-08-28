@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { UserService } from '../_services/user.service';
 import { MoodService } from '../_services/mood.service';
 import { Mood } from '../_models/Mood';
+import { DiaryNotificationService } from '../_services/diaryNotification.service';
+import { LoadingService } from '../_services/loading.service';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +20,8 @@ export class HomeComponent implements OnInit {
   moodsList: Mood[];
   submitted = false;
 
-  constructor(private router: Router, private userService: UserService, private moodService: MoodService) { }
+  constructor(private router: Router, private userService: UserService, private moodService: MoodService,
+              private notificationService: DiaryNotificationService) { }
 
   ngOnInit() {
 
@@ -37,7 +40,9 @@ export class HomeComponent implements OnInit {
 
     if (!mood) {
 
-      console.log('Mood doesn\'t exist!');
+      this.notificationService.notify('Mood doesn\'t exist!', false);
+      this.submitted = false;
+
       return;
     }
 
@@ -47,7 +52,7 @@ export class HomeComponent implements OnInit {
       token: localStorage.getItem('token')
     };
 
-    this.moodService.saveMood(moodModel).subscribe(next => {
+    this.moodService.saveMood(moodModel).subscribe(() => {
 
       this.hasMoodBeenSelected = true;
       this.submitted = false;
