@@ -55,7 +55,7 @@ export class DiaryComponent implements OnInit {
 
   nextPage() {
 
-    if (this.diaryEntries.length === 11) {
+    if (this.diaryEntries.length === 10) {
       this.page++;
       this.getAllDiaryEntries();
     }
