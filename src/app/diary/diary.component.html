@@ -37,7 +37,22 @@
         <a (click)="writeToDiary()" class="write-to-diary-btn">Write to diary</a>
       </div>
     </div>
-    <div class="book front-cover" (click)="openBook()" [ngClass]="{'openBook': this.isBookOpen}"></div>  
+    <div class="book front-cover" (click)="openBook()" [ngClass]="{'openBook': this.isBookOpen}">
+      <div class="date-filter" *ngIf="this.isBookOpen">
+        <div class="select-date">
+          <select #month>
+            <option *ngFor="let monthName of this.months; index as i" value="{{ i + 1 }}">{{ monthName }}</option>
+          </select>
+          <select #year>
+            <option *ngFor="let years of yearRange; index as i" value="{{ i + this.firstEntryYear }}">{{ i + this.firstEntryYear }}</option>
+          </select>
+        </div>
+        <div class="filter-buttons">
+          <button (click)="filterByDate(month.value, year.value)">Filter</button>
+          <button (click)="clearFilter()">Clear</button>
+        </div>
+      </div>
+    </div>  
   </div>
   <!-- -------------------------------------------------------------------------------------- -->
   <!-- Window for creating a new diary entry -->

@@ -249,6 +249,38 @@
     background-size: cover;
 }
 
+.date-filter {
+
+    opacity: 0;
+    transform: rotateY(180deg);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: showFilters 1s 2s forwards;
+}
+
+@keyframes showFilters {
+
+    0%
+    {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.select-date, .filter-buttons {
+
+    margin-bottom: 10px;
+    width: 150px;
+    display: flex;
+    justify-content: space-between;
+}
+
 .book-paper-bottom {
 
     width: 308px;

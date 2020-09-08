@@ -77,4 +77,13 @@ export class DiaryService {
       }
     });
   }
+
+  filterDiaryEntries(month: number, year: number, page: number) {
+
+    return this.http.get(this.baseUrl + 'filter/' + month + '/' + year + '/' + page, {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token')
+      }
+    });
+  }
 }

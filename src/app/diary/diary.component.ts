@@ -23,6 +23,12 @@ export class DiaryComponent implements OnInit {
   error = false;
   titleSection = true;
   nextSection = false;
+  isFiltered = false;
+  months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  month: number;
+  year: number;
+  firstEntryYear: number;
+  yearRange: any;
 
   constructor(private diaryService: DiaryService, private userService: UserService,
               private diaryNotificationService: DiaryNotificationService) { }
@@ -42,6 +48,11 @@ export class DiaryComponent implements OnInit {
       this.clearDiaryModel();
 
       this.isEditing = false;
+
+      // tslint:disable-next-line: radix
+      this.firstEntryYear = parseInt(this.diaryEntries[0].dateRecorded.split('/')[2]);
+      this.yearRange = new Array(new Date().getFullYear() - (this.firstEntryYear - 1));
+
       if (window.location.search.indexOf('openBook=true') !== -1) {
 
         this.openBook();
@@ -57,7 +68,12 @@ export class DiaryComponent implements OnInit {
 
     if (this.diaryEntries.length === 10) {
       this.page++;
-      this.getAllDiaryEntries();
+      if (this.isFiltered) {
+        this.filterByDate(this.month, this.year)
+      }
+      else {
+        this.getAllDiaryEntries();
+      }
     }
   }
 
@@ -65,7 +81,12 @@ export class DiaryComponent implements OnInit {
 
     if (this.page > 1) {
       this.page--;
-      this.getAllDiaryEntries();
+      if (this.isFiltered) {
+        this.filterByDate(this.month, this.year)
+      }
+      else {
+        this.getAllDiaryEntries();
+      }
     }
   }
 
@@ -173,7 +194,8 @@ export class DiaryComponent implements OnInit {
       id: null,
       title: '',
       entry: '',
-      userId: null
+      userId: null,
+      dateRecorded: ''
     };
   }
 
@@ -193,5 +215,30 @@ export class DiaryComponent implements OnInit {
       this.titleSection = !this.titleSection;
     }, 490);
     this.nextSection = !this.nextSection;
+  }
+
+  filterByDate(month, year) {
+
+    this.month = month;
+    this.year = year;
+
+    this.diaryService.filterDiaryEntries(month, year, this.page).subscribe((response: Array<DiaryEntry>) => {
+
+      console.log(response);
+      this.diaryEntries = response;
+      this.cancelWrittingToDiary();
+      this.clearDiaryModel();
+
+      this.isEditing = false;
+      this.isFiltered = true;
+    }, error => {
+      console.error(error);
+    });
+  }
+
+  clearFilter() {
+
+    this.isFiltered = false;
+    this.getAllDiaryEntries();
   }
 }
