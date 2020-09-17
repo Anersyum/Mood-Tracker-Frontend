@@ -42,6 +42,7 @@ export class RegisterComponent implements OnInit {
 
       this.loadingService.stopLoad();
       this.error = error;
+      console.log(error);
     });
   }
 
