@@ -27,7 +27,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 70px;
     width: 300px;
 }
 
@@ -36,29 +35,16 @@
     padding: 5px 0;
 }
 
-.profile-birth-date {
-
-    width: 200px;
-}
-
-.full-name-container, .username-and-email-container {
-
-    width: 150%;
-    display: flex;
-    flex-direction: row;
-    margin-left: 30px;
-}
-
-.first-name-container input, .last-name-container input, 
-    .username-container input, .email-container input {
+.username-container input, .email-container input {
 
     margin-top: 5px;
 }
 
-.first-name-container , .last-name-container , 
-    .username-container , .email-container  {
+.username-container , .email-container  {
 
-    width: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .file-upload-button-container {

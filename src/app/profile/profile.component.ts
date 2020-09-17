@@ -14,30 +14,19 @@ export class ProfileComponent implements OnInit {
 
   model = {
     username: null,
-    bio: null,
-    dateOfBirth: null,
     profileImage: File = null,
-    firstName: null,
     email: null,
-    lastName: null,
     profileImagePath: ''
   };
   profileImagePath: SafeUrl;
   constructor(private userService: UserService, private notificationService: DiaryNotificationService,
               private router: Router, private sanitizer: DomSanitizer) { }
-  // todo: adjust date for localization
+              
   ngOnInit() {
 
     this.userService.getLoggedInUserInfo().subscribe((response: any) => {
 
       this.model = response;
-
-      const date = this.model.dateOfBirth.split('/');
-      const day = date[0];
-      const month = date[1];
-      const year = date[2];
-
-      this.model.dateOfBirth = year + '-' + month + '-' + day;
       this.profileImagePath = this.sanitizer.bypassSecurityTrustUrl(this.userService.userProfileImage);
     }, error => {
 

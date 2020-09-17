@@ -8,30 +8,14 @@
     <input [hidden]="true" id="file-upload" type="file" name="profileImage" (change)="approveForm(editProfileForm, $event, fileName)">
   </div>
   <div class="profile-information-container">
-    <div class="full-name-container">
-      <div class="first-name-container">
-        <label for="firstName">First Name:</label>
-        <input type="text" name="firstName" id="firstName" [(ngModel)]="model.firstName">
-      </div>
-      <div class="last-name-container">
-        <label for="lastName">Last Name:</label>
-        <input type="text" name="lastName" id="lastName" [(ngModel)]="model.lastName">  
-      </div>
+    <div class="username-container">
+      <label for="username">Username:</label>
+      <input required type="text" name="username" id="username" [(ngModel)]="model.username" required>
     </div>
-    <div class="username-and-email-container">
-      <div class="username-container">
-        <label for="username">Username:</label>
-        <input required type="text" name="username" id="username" [(ngModel)]="model.username" required>
-      </div>
-      <div class="email-container">
-        <label for="email" required>E-mail:</label>
-        <input email="true" type="email" name="email" id="email" [(ngModel)]="model.email" required>
-      </div>
+    <div class="email-container">
+      <label for="email" required>E-mail:</label>
+      <input email="true" type="email" name="email" id="email" [(ngModel)]="model.email" required>
     </div>
-    <label for="birth-date">Date of birth:</label>
-    <input type="date" name="dateOfBirth" [(ngModel)]="model.dateOfBirth" class="profile-birth-date">
-    <label for="bio">Write something about yourself:</label>
-    <textarea name="bio" id="bio" class="profile-bio" [(ngModel)]="model.bio"></textarea>
     <button type="submit" [disabled]="!editProfileForm.valid || !editProfileForm.dirty">Save</button>
   </div>
 </form>
