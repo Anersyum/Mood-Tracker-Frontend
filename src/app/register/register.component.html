@@ -2,15 +2,10 @@
   <h1>Register</h1>
   <span *ngIf="this.error" class="register-error">{{ this.error }}</span>
   <span *ngIf="!this.passwordsMatch" class="register-error">Passwords don't match</span>
-  <div class="register-fullname-container">
-    <input type="text" placeholder="First name" name="firstName" [(ngModel)]="model.firstName">
-    <input type="text" name="lastName" id="lastName" placeholder="Last name" [(ngModel)]="model.lastName">
-  </div>
   <div class="username-email-container">
     <input type="text" required name="username" id="username" placeholder="Username" [(ngModel)]="model.username">
     <input type="email" required name="email" id="email" placeholder="Email" [(ngModel)]="model.email" email="true">
   </div>
-  <input type="date" name="dateOfBirth" id="dateOfBirth" [(ngModel)]="model.dateOfBirth">
   <div class="password-container">
     <input type="password" required name="password" id="password" placeholder="Password" [(ngModel)]="model.password">
     <input type="password" required name="rePassword" id="rePassword" placeholder="Retype password" [(ngModel)]="model.rePassword">

@@ -15,10 +15,7 @@ export class RegisterComponent implements OnInit {
     username: '',
     password: '',
     rePassword: '',
-    email: '',
-    firstName: '',
-    lastName: '',
-    dateOfBirth: ''
+    email: ''
   };
   error: any = null;
   passwordsMatch = true;

@@ -1,4 +1,4 @@
-import { Component, OnInit, SecurityContext } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../_services/user.service';
 import { DiaryNotificationService } from '../_services/diaryNotification.service';
 import { Router } from '@angular/router';
@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
   profileImagePath: SafeUrl;
   constructor(private userService: UserService, private notificationService: DiaryNotificationService,
               private router: Router, private sanitizer: DomSanitizer) { }
-              
+
   ngOnInit() {
 
     this.userService.getLoggedInUserInfo().subscribe((response: any) => {
