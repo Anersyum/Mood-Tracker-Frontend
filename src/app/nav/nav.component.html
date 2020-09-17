@@ -6,19 +6,19 @@
       </a>
     </li>
     <li *ngIf="isLoggedIn()">
-      <a [routerLink]="['/home']" routerLinkActive="activated">Home</a>
+      <a [routerLink]="['/home']" routerLinkActive="activated" (click)="stopLoading()">Home</a>
     </li>
     <li>
-        <a *ngIf="!isLoggedIn()" [routerLink]="['/login']" routerLinkActive="activated">Login</a>
+        <a *ngIf="!isLoggedIn()" [routerLink]="['/login']" routerLinkActive="activated" (click)="stopLoading()">Login</a>
     </li>
     <li *ngIf="!isLoggedIn()">
-      <a [routerLink]="['/register']" routerLinkActive="activated" >Register</a>
+      <a [routerLink]="['/register']" routerLinkActive="activated" (click)="stopLoading()">Register</a>
     </li>
     <li *ngIf="isLoggedIn()">
-      <a [routerLink]="['/statistics']" routerLinkActive="activated" >Statistics</a>
+      <a [routerLink]="['/statistics']" routerLinkActive="activated" (click)="stopLoading()"(click)="stopLoading()">Statistics</a>
     </li>
     <li *ngIf="isLoggedIn()">
-      <a [routerLink]="['/diary']" routerLinkActive="activated">Diary</a>
+      <a [routerLink]="['/diary']" routerLinkActive="activated" (click)="stopLoading()">Diary</a>
     </li>
     <!-- todo: fix animation because it's a bit off -->
     <li *ngIf="isLoggedIn()" class="navigation-username">

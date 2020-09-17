@@ -3,6 +3,7 @@ import { AuthService } from '../_services/auth.service';
 import { Router } from '@angular/router';
 import { UserService } from '../_services/user.service';
 import { fromEvent } from 'rxjs';
+import { LoadingService } from '../_services/loading.service';
 
 @Component({
   selector: 'app-nav',
@@ -21,7 +22,7 @@ export class NavComponent implements OnInit {
   };
 
   constructor(public authService: AuthService, private router: Router,
-              public userService: UserService) { }
+              public userService: UserService, private loadingService: LoadingService) { }
 
   ngOnInit() {
 
@@ -67,5 +68,10 @@ export class NavComponent implements OnInit {
         this.subscription = null;
       }
     });
+  }
+
+  stopLoading() {
+
+    this.loadingService.stopLoad();
   }
 }

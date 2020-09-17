@@ -38,6 +38,7 @@ export class StatisticsComponent implements OnInit {
       startup: true
     }
   };
+  showNoStatisticsMessage = false;
 
   constructor(private moodService: MoodService, private loadingService: LoadingService) {  }
 
@@ -86,6 +87,11 @@ export class StatisticsComponent implements OnInit {
       this.chartOptions.vAxis.viewWindow.max = (maxValue === 0) ? 1 : maxValue;
       this.chartData = this.getChartData();
       this.showChart = true;
+
+      if (this.moodCount.length <= 0) {
+        this.showNoStatisticsMessage = true;
+        this.stopLoading();
+      }
     }, error => {
 
       console.error(error);

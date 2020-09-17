@@ -1,8 +1,11 @@
 <div class="chart-container">
   <h1>Your monthly report</h1>
-  <google-chart class="chart" 
-    *ngIf="this.showChart" [title]="this.chartTitle"
+  <google-chart class="chart"
+    *ngIf="this.showChart && this.moodCount.length > 0" [title]="this.chartTitle"
     [dynamicResize]="true"
     [type]="this.chartType" [data]="this.chartData" [options]="this.chartOptions" (ready)="stopLoading()">
   </google-chart>
+  <div *ngIf="showNoStatisticsMessage">
+    <h3>No statistics yet. Try and add a mood to see the monthly statistics.</h3>
+  </div>
 </div>
