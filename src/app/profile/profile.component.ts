@@ -4,6 +4,7 @@ import { DiaryNotificationService } from '../_services/diaryNotification.service
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { ok } from 'assert';
 
 @Component({
   selector: 'app-profile',
@@ -68,5 +69,21 @@ export class ProfileComponent implements OnInit {
     }
 
     reader.readAsDataURL(me.target.files[0]);
+  }
+
+  deleteAccount() {
+
+    const deleteAccount = confirm('Do you really want to delete your account?');
+
+    if (deleteAccount) {
+      this.userService.deleteUser().subscribe(() => {
+        localStorage.removeItem('token');
+        this.router.navigateByUrl('/login');
+      }, error => {
+
+        this.notificationService.notify('Something went wrong', false);
+        console.error(error);
+      });
+    }
   }
 }

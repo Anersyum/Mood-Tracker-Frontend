@@ -75,4 +75,15 @@ export class UserService {
 
     return this.approvedImageTypes.includes(type.toLowerCase());
   }
+
+  deleteUser() {
+
+    const userId = this.getUserIdFromToken(localStorage.getItem('token'));
+
+    return this.http.post(this.baseUrl + 'delete/user/', {userId}, {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token')
+      }
+    });
+  }
 }
