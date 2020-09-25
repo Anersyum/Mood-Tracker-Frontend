@@ -215,7 +215,7 @@
 
 .profile-menu-container-shadow {
 
-    background-color: rgb(0, 0, 0, 0.7);
+    background-color: rgb(0, 0, 0, 0.8);
     position: absolute;
     top: 0;
     left: 0;
@@ -225,6 +225,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: showMobileMenu 1s forwards;
+}
+
+@keyframes showMobileMenu {
+
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 100%;
+    }
 }
 
 .profile-menu {
@@ -236,6 +247,8 @@
     height: 20%;
     border-radius: 5px;
     align-items: center;
+    opacity: 0;
+    animation: showMobileMenu 0.5s 0.3s forwards;
 }
 
 .profile-menu > ul {
