@@ -38,7 +38,9 @@
       </div>
     </li>
     <li *ngIf="isLoggedIn()" class="navigation-username show-on-mobile">
-      <button class="open-profile-menu-btn" (click)="openMobileProfileMenu()"><i class="fa fa-bars" aria-hidden="true"></i></button>
+      <button class="open-profile-menu-btn" (click)="openMobileProfileMenu()">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </button>
       <div class="profile-menu-container-shadow" *ngIf="this.isMenuOpen">
         <div class="profile-menu">
           <button (click)="closeMenu()" class="close-mobile-menu-btn">X</button>
