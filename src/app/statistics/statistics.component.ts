@@ -3,6 +3,7 @@ import { MoodService } from '../_services/mood.service';
 import { ChartType } from 'angular-google-charts';
 import { LoadingService } from '../_services/loading.service';
 import { MoodStatistic } from '../_models/MoodStatistic';
+import { NONE_TYPE } from '@angular/compiler';
 
 @Component({
   selector: 'app-statistics',
@@ -12,7 +13,7 @@ import { MoodStatistic } from '../_models/MoodStatistic';
 export class StatisticsComponent implements OnInit {
 
   moodCount: Array<MoodStatistic>;
-  chartType = ChartType.ColumnChart;
+  chartType = ChartType.BarChart;
   chartData: any;
   showChart = false;
   chartTitle = 'Mood statistics';
@@ -20,6 +21,7 @@ export class StatisticsComponent implements OnInit {
     colors: ['#745c97', '#8ac6d1', '#bd574e', 'red', 'green', 'yellow', 'blue', 'violet', 'pink'],
     backgroundColor: 'transparent',
     legend: 'none',
+    role: 'style',
     hAxis: {
       title: 'Moods'
     },
@@ -31,14 +33,18 @@ export class StatisticsComponent implements OnInit {
         max: 1
       },
     },
-    isStacked: true,
     animation: {
       duration: 1000,
       easing: 'inAndOut',
       startup: true
-    }
+    },
   };
   showNoStatisticsMessage = false;
+  chartColumns = [
+    {id: 'mood', label: 'Mood', type: 'string'},
+    {id: 'moodCount', label: 'Mood Count', type: 'number'},
+    {role: 'style', type: 'string'}
+  ];
 
   constructor(private moodService: MoodService, private loadingService: LoadingService) {  }
 
@@ -57,12 +63,17 @@ export class StatisticsComponent implements OnInit {
   private fillArrayWithMoodStatistics() {
 
     const savedMoodsDistinct = this.moodCount.length;
-    const moodArray = new Array(savedMoodsDistinct).fill(0).map(() => new Array(savedMoodsDistinct + 1).fill(0));
+    const moodArray = new Array();
+    const colorsArray = ['#745c97', '#8ac6d1', '#bd574e', '#89c9b8', '#df7599', '#445c3c', '#142d4c', '#a6b1e1', '#494949', '#d38cad', '#c36a2d'];
 
-    for (let i = 0; i < moodArray.length; i++) {
+    for (let i = 0; i < savedMoodsDistinct; i++) {
+      const placeHolderArray = new Array(3);
 
-      moodArray[i][0] = this.moodCount[i].moodName.charAt(0).toUpperCase() + this.moodCount[i].moodName.slice(1);
-      moodArray[i][i + 1] = this.moodCount[i].count;
+      placeHolderArray[0] = this.moodCount[i].moodName.charAt(0).toUpperCase() + this.moodCount[i].moodName.slice(1);
+      placeHolderArray[1] = this.moodCount[i].count;
+      placeHolderArray[2] = colorsArray[i];
+
+      moodArray.push(placeHolderArray);
     }
 
     return moodArray;

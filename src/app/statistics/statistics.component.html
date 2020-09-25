@@ -3,7 +3,8 @@
   <google-chart class="chart"
     *ngIf="this.showChart && this.moodCount.length > 0" [title]="this.chartTitle"
     [dynamicResize]="true"
-    [type]="this.chartType" [data]="this.chartData" [options]="this.chartOptions" (ready)="stopLoading()">
+    [type]="this.chartType" [data]="this.chartData" [options]="this.chartOptions"
+    [columns]="this.chartColumns" (ready)="stopLoading()">
   </google-chart>
   <div *ngIf="showNoStatisticsMessage">
     <h3>No statistics yet. Try and add a mood to see the monthly statistics.</h3>
