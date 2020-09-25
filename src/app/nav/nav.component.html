@@ -21,11 +21,26 @@
       <a [routerLink]="['/diary']" routerLinkActive="activated" (click)="stopLoading()">Diary</a>
     </li>
     <!-- todo: fix animation because it's a bit off -->
-    <li *ngIf="isLoggedIn()" class="navigation-username">
+    <li *ngIf="isLoggedIn()" class="navigation-username show-on-desktop">
       Welcome back {{ getLoggedInUsername() | titlecase }}!
       <div class="profile-image" (click)="dropdownMenu()">
         <img class="profile-image" [src]="userService.userProfileImage" alt="">
         <div [ngClass]="{'dropdown': this.dropdown, 'hidden': !this.dropdown}">
+          <ul>
+            <li>
+              <a [routerLink]="['/profile']">Edit profile</a>
+            </li>
+            <li>
+              <a *ngIf="isLoggedIn()" (click)="logout()">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </li>
+    <li *ngIf="isLoggedIn()" class="navigation-username show-on-mobile">
+      <button class="open-profile-menu-btn" (click)="openMobileProfileMenu()"><i class="fa fa-bars" aria-hidden="true"></i></button>
+      <div class="profile-menu-container-shadow" *ngIf="this.isMenuOpen">
+        <div class="profile-menu">
           <ul>
             <li>
               <a [routerLink]="['/profile']">Edit profile</a>

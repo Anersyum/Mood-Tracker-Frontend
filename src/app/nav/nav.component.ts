@@ -20,6 +20,7 @@ export class NavComponent implements OnInit {
   searchModel = {
     user: ''
   };
+  isMenuOpen = false;
 
   constructor(public authService: AuthService, private router: Router,
               public userService: UserService, private loadingService: LoadingService) { }
@@ -27,6 +28,7 @@ export class NavComponent implements OnInit {
   ngOnInit() {
 
     this.userService.setProfileImage();
+    console.log(this.isMenuOpen)
   }
 
   logout() {
@@ -73,5 +75,10 @@ export class NavComponent implements OnInit {
   stopLoading() {
 
     this.loadingService.stopLoad();
+  }
+
+  openMobileProfileMenu() {
+
+    this.isMenuOpen = true;
   }
 }
