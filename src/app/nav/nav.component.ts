@@ -28,13 +28,12 @@ export class NavComponent implements OnInit {
   ngOnInit() {
 
     this.userService.setProfileImage();
-    console.log(this.isMenuOpen)
   }
 
   logout() {
 
     localStorage.removeItem('token');
-
+    this.closeMenu();
     this.dropdown = false;
     this.router.navigateByUrl('/login');
   }
@@ -80,5 +79,10 @@ export class NavComponent implements OnInit {
   openMobileProfileMenu() {
 
     this.isMenuOpen = true;
+  }
+
+  closeMenu() {
+
+    this.isMenuOpen = false;
   }
 }

@@ -208,6 +208,7 @@
 }
 /*---------------- END OF SEARCH BAR ----------------------*/
 
+/*--------------- MOBILE MENU -----------------------------*/
 .show-on-mobile {
 
     display: none;
@@ -249,6 +250,7 @@
     align-items: center;
     opacity: 0;
     animation: showMobileMenu 0.5s 0.3s forwards;
+    position: relative;
 }
 
 .profile-menu > ul {
@@ -270,6 +272,16 @@
 .profile-menu > ul > li:nth-child(1) > a {
 
     padding: 0 0 10px 0;
+}
+
+.close-mobile-menu {
+
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    color: gainsboro;
+    padding: 0;
 }
 
 @media only screen and (max-width: 600px) {
