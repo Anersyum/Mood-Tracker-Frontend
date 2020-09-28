@@ -310,3 +310,17 @@
         display: none;
     }
 }
+
+@media only screen and (max-width: 280px) {
+
+    .navigation-links a {
+
+        padding: 0px 10px;
+    }
+
+    .navigation-links img {
+
+        width: 30px !important;
+        height: 30px !important;
+    }
+}
