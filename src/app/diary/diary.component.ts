@@ -29,6 +29,7 @@ export class DiaryComponent implements OnInit {
   year: number;
   firstEntryYear: number;
   yearRange: any;
+  isFilterMenuOpen = false;
 
   constructor(private diaryService: DiaryService, private userService: UserService,
               private diaryNotificationService: DiaryNotificationService) { }
@@ -231,6 +232,7 @@ export class DiaryComponent implements OnInit {
 
       this.isEditing = false;
       this.isFiltered = true;
+      this.closeFilterMenu();
     }, error => {
       console.error(error);
     });
@@ -240,5 +242,17 @@ export class DiaryComponent implements OnInit {
 
     this.isFiltered = false;
     this.getAllDiaryEntries();
+    this.closeFilterMenu();
+  }
+
+  // these two functions are for the mobile filter menu
+  openFilterMenu() {
+
+    this.isFilterMenuOpen = true;
+  }
+
+  closeFilterMenu() {
+
+    this.isFilterMenuOpen = false;
   }
 }

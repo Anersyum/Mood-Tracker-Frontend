@@ -118,6 +118,9 @@
         </span>
       </div>
     </div>
+    <button class="open-filter-menu-btn" (click)="openFilterMenu()">
+      <i class="fa fa-filter" aria-hidden="true"></i>
+    </button>
     <div class="page-management-container" *ngIf="!this.error">
       <a (click)="previousPage()"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
       <a (click)="nextPage()"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
@@ -129,4 +132,23 @@
       <a (click)="writeToDiary()" class="write-to-diary-btn">Write to diary</a>
     </div>
   </div>
+</div>
+<div class="mobile-filtering-menu" *ngIf="isFilterMenuOpen">
+  <div class="date-filter mobile-date-filter">
+    <div class="select-date">
+      <select #month>
+        <option *ngFor="let monthName of this.months; index as i" value="{{ i + 1 }}">{{ monthName }}</option>
+      </select>
+      <select #year>
+        <option *ngFor="let years of yearRange; index as i" value="{{ i + this.firstEntryYear }}">{{ i + this.firstEntryYear }}</option>
+      </select>
+    </div>
+    <div class="filter-buttons">
+      <button (click)="filterByDate(month.value, year.value)">Filter</button>
+      <button (click)="clearFilter()">Clear</button>
+    </div>
+  </div>
+  <button class="close-mobile-filter-menu-btn" (click)="closeFilterMenu()">
+    <i class="fa fa-times-circle" aria-hidden="true"></i>
+  </button>
 </div>
