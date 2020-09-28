@@ -1,4 +1,4 @@
-.diary-container {
+.diary-container, .diary-mobile-container {
 
     width: 100%;
     height: calc(100% - 150px);
@@ -31,6 +31,7 @@
     justify-content: center;
     animation: shadowFadeIn 0.5s forwards;
     opacity: 0;
+    z-index: 1;
 }
 
 .create-new-entry-modal {
@@ -158,6 +159,7 @@
     display: flex;
     justify-content: center;
     background-color: black;
+    z-index: 1;
 }
 
 .entry {
@@ -174,6 +176,7 @@
     word-wrap: break-word;
     animation: pageEntry 1s forwards;
     text-align: justify;
+    z-index: 2;
 }
 
 @keyframes pageEntry {
@@ -464,3 +467,69 @@
     text-align: center;
 }
 /* ---------------------------------------------- */
+/* Mobile view */
+.diary-mobile-container {
+
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .diary-mobile-container {
+
+        display: flex;
+        position: absolute;
+        top: 40px;
+        z-index: 0;
+    }
+
+    #diary-entries {
+
+        display: none;
+    }
+
+    .diary-paper {
+
+        background-color: whitesmoke;
+        width: 80%;
+        height: 80%;
+    }
+
+    .entry {
+        width: 70%;
+    }
+
+    .book-summary td {
+
+        font-size: 10pt;
+        padding: 4.5px 10px;
+    }
+
+    .page-management-container {
+
+        position: relative;
+        margin-top: -15px;
+        bottom: 0;
+    }
+
+    .page-number {
+
+        bottom: 0;
+        right: 15%;
+        top: 75%;
+        font-size: 10pt;
+    }
+}
+
+@media only screen and (max-height: 568px) {
+
+    .diary-paper {
+
+        height: 90%;
+    }
+
+    .page-number {
+
+        top: 83%;
+    }
+}
