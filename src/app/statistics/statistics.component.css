@@ -30,4 +30,9 @@
 
         width: 100%;
     }
+
+    .chart-container h1 {
+
+        font-size: 16pt;
+    }
 } 
