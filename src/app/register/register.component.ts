@@ -40,9 +40,9 @@ export class RegisterComponent implements OnInit {
       this.router.navigateByUrl('/login?registerSuccess=true');
     }, error => {
 
+      // send different error code for registration problem
       this.loadingService.stopLoad();
-      this.error = error;
-      console.log(error);
+      this.error = 'The username is already taken or the password is too short.';
     });
   }
 

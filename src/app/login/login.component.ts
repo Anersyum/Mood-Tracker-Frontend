@@ -19,7 +19,8 @@ export class LoginComponent implements OnInit {
   };
   registeredSuccess = false;
   loginError = false;
-
+  showError = false;
+  
   constructor(private authService: AuthService, private router: Router, private loadingService: LoadingService) { }
 
   ngOnInit() {
@@ -45,6 +46,7 @@ export class LoginComponent implements OnInit {
       if (error === 401) {
         this.loginError = true;
       }
+      this.showError = true;
     });
   }
 
