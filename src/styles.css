@@ -44,7 +44,7 @@ input {
     border-radius: 10px;
     border: none;
     margin-bottom: 10px;
-    font-size: 1rem;
+    font-size: 1em;
 }
 
 input:focus, input:active, textarea:focus, textarea:active {

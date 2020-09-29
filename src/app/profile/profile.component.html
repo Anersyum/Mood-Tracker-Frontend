@@ -17,6 +17,6 @@
       <input email="true" type="email" name="email" id="email" [(ngModel)]="model.email" required>
     </div>
     <button type="submit" [disabled]="!editProfileForm.valid || !editProfileForm.dirty">Save</button>
-    <button type="button" (click)="deleteAccount()">Delete account</button>
+    <button type="button" class="delete-btn" (click)="deleteAccount()">Delete account</button>
   </div>
 </form>

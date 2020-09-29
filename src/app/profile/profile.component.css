@@ -90,3 +90,52 @@
 
     background-color: #bbded6;
 }
+
+.delete-btn {
+
+    margin-top: 10px;
+}
+
+/* mobile view */
+@media only screen and (max-width: 767px) {
+
+    .profile-form-container {
+
+        flex-direction: column;
+        font-size: 10pt;
+    }
+
+    .profile-form-container button {
+
+        font-size: 10pt !important;
+    }
+
+    .profile-image-container {
+
+        width: 100%;
+        align-items: center;
+    }
+
+    .profile-image {
+
+        width: 50% !important;
+    }
+
+    .file-upload-button-container {
+
+        width: 100%;
+        margin-left: 0;
+        justify-content: center;
+    }
+
+    .profile-information-container {
+
+        width: 100%;
+        align-items: center;
+    }
+
+    .username-container, .email-container {
+
+        align-items: center;
+    }
+}
