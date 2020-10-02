@@ -54,9 +54,17 @@ export class ProfileComponent implements OnInit {
 
   approveForm(form: NgForm, me, fileName: HTMLLabelElement) {
 
+    const fileSize = me.target.files[0].size / (1024 * 1024);
+
     if (!this.userService.isValidImage(me.target.files[0])) {
 
       this.notificationService.notify('That format isn\'t supported', false);
+      return;
+    }
+
+    if (fileSize > 2.0) {
+
+      this.notificationService.notify('Image too large. 2MB is max file size', false);
       return;
     }
 
