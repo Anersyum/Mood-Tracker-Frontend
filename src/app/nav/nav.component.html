@@ -42,7 +42,7 @@
       <button class="open-profile-menu-btn" (click)="openMobileProfileMenu()">
         <i class="fa fa-bars" aria-hidden="true"></i>
       </button>
-      <div class="profile-menu-container-shadow" *ngIf="this.isMenuOpen">
+      <div class="profile-menu-container-shadow" *ngIf="this.isMenuOpen" (click)="closeMenu()">
         <div class="profile-menu">
           <button (click)="closeMenu()" class="close-mobile-menu-btn">X</button>
           <ul>
