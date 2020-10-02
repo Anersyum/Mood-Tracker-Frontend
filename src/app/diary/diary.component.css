@@ -492,8 +492,7 @@
 
 .mobile-date-filter {
 
-    animation: none;
-    opacity: 1;
+    animation-delay: 0.2s;
 }
 
 .close-mobile-filter-menu-btn {
