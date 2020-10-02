@@ -79,7 +79,7 @@ textarea {
     position: absolute;
     bottom: var(--notification-height);
     color: white;
-    font-size: 1.1rem;
+    font-size: 0.95em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -99,5 +99,11 @@ textarea {
     100% { 
         right: 5px;
     }
+}
+
+.notify-text {
+
+    text-align: center;
+    padding: 0 5px;
 }
 /* ------------------------------------- */
