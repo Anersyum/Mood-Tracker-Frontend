@@ -2,7 +2,7 @@
 
     display: flex;
     width: 100%;
-    height: calc(100% - 50px);
+    height: calc(100% - 51px);
 }
 
 .background-image {
@@ -12,4 +12,50 @@
     height: 100%;
     background-repeat: no-repeat;
     background-size: 100% 100%;
+}
+
+.attribution {
+
+    position: absolute;
+    bottom: 0px;
+    left: 5px;
+    color: #ffffff;
+}
+
+.attribution a, .index-image-attribution a {
+
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.index-image-attribution {
+
+    position: absolute;
+    bottom: 25px;
+    left: 5px;
+    color: #ffffff;
+}
+
+.title {
+
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 51px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+}
+
+.title-strong {
+
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.title-weak {
+
+    font-size: 1.3em;
 }

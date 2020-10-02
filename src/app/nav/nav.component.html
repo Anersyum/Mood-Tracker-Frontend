@@ -6,7 +6,7 @@
       </a>
     </li>
     <li *ngIf="isLoggedIn()">
-      <a [routerLink]="['/home']" routerLinkActive="activated" (click)="stopLoading()">Home</a>
+      <a [routerLink]="['/mood']" routerLinkActive="activated" (click)="stopLoading()">Mood</a>
     </li>
     <li>
         <a *ngIf="!isLoggedIn()" [routerLink]="['/login']" routerLinkActive="activated" (click)="stopLoading()">Login</a>

@@ -13,7 +13,7 @@ import { DiaryComponent } from './diary/diary.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [LoggedinGuard]},
   { path: 'register', component: RegisterComponent, canActivate: [LoggedinGuard]},
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'mood', component: HomeComponent, canActivate: [AuthGuard] },
   { path: '', component: IndexComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'statistics', component: StatisticsComponent, canActivate: [AuthGuard] },
