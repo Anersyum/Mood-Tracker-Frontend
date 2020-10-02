@@ -4,6 +4,7 @@ import { ChartType } from 'angular-google-charts';
 import { LoadingService } from '../_services/loading.service';
 import { MoodStatistic } from '../_models/MoodStatistic';
 import { NONE_TYPE } from '@angular/compiler';
+import { DiaryNotificationService } from '../_services/diaryNotification.service';
 
 @Component({
   selector: 'app-statistics',
@@ -46,7 +47,8 @@ export class StatisticsComponent implements OnInit {
     {role: 'style', type: 'string'}
   ];
 
-  constructor(private moodService: MoodService, private loadingService: LoadingService) {  }
+  constructor(private moodService: MoodService, private loadingService: LoadingService,
+              private notificationService: DiaryNotificationService) {  }
 
   ngOnInit() {
 
@@ -107,6 +109,7 @@ export class StatisticsComponent implements OnInit {
 
       console.error(error);
       this.stopLoading();
+      this.notificationService.notify('There was a problem getting the statistics.', false);
     });
   }
 }

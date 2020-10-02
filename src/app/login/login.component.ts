@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
   };
   registeredSuccess = false;
   loginError = false;
-  showError = false;
-  
+  errorMessage: string;
+
   constructor(private authService: AuthService, private router: Router, private loadingService: LoadingService) { }
 
   ngOnInit() {
@@ -44,9 +44,12 @@ export class LoginComponent implements OnInit {
     }, error => {
       this.loadingService.stopLoad();
       if (error === 401) {
-        this.loginError = true;
+        this.errorMessage = 'Username or password is wrong!';
       }
-      this.showError = true;
+      else {
+        this.errorMessage = 'Something went wrong.';
+      }
+      this.loginError = true;
     });
   }
 

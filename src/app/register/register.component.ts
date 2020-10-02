@@ -40,9 +40,21 @@ export class RegisterComponent implements OnInit {
       this.router.navigateByUrl('/login?registerSuccess=true');
     }, error => {
 
-      // send different error code for registration problem
+      this.error = 'Something went wrong';
+
+      switch (error) {
+        case 801:
+          this.error = 'The usrename or email is taken';
+          break;
+        case 802:
+          this.error = 'Passwords don\'t match';
+          break;
+        case 803:
+          this.error = 'Wrong email format';
+          break;
+      }
+      
       this.loadingService.stopLoad();
-      this.error = 'The username is already taken or the password is too short.';
     });
   }
 

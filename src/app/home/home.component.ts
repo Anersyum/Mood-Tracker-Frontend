@@ -28,10 +28,17 @@ export class HomeComponent implements OnInit {
     this.moodService.getMoodsList('all').subscribe((response: Mood[]) => {
 
       this.moodsList = response;
+    }, error => {
+
+      this.notificationService.notify('Problem getting the moods from the server', false);
     });
   }
 
   saveMood() {
+
+    if (typeof this.moodsList === 'undefined') {
+      return;
+    }
 
     this.submitted = true;
 
@@ -60,6 +67,7 @@ export class HomeComponent implements OnInit {
 
       this.submitted = false;
       console.log(error);
+      this.notificationService.notify('Something went wrong', false);
     });
   }
 
