@@ -42,7 +42,7 @@ export class ProfileComponent implements OnInit {
 
       this.notificationService.notify('Edited profile successfully!');
       this.userService.setProfileImage();
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/mood');
     }, error => {
 
       console.error(error);

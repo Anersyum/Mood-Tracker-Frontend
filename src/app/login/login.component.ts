@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.model).subscribe(next => {
 
       this.loadingService.stopLoad();
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/mood');
     }, error => {
       this.loadingService.stopLoad();
       if (error === 401) {
