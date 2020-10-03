@@ -27,7 +27,9 @@ export class NavComponent implements OnInit {
 
   ngOnInit() {
 
-    this.userService.setProfileImage();
+    if (this.isLoggedIn()) {
+      this.userService.setProfileImage();
+    }
   }
 
   logout() {

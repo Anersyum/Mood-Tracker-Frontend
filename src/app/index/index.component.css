@@ -59,3 +59,25 @@
 
     font-size: 1.3em;
 }
+
+@media only screen and (max-width: 767px) {
+
+    .title-weak {
+
+        font-size: 1em;
+        text-align: center;
+    }
+
+    .attribution, .index-image-attribution {
+
+        font-size: 0.7em;
+    }
+}
+
+@media only screen and (max-width: 323px) {
+
+    .index-image-attribution {
+
+        bottom: 30px;
+    }
+}
