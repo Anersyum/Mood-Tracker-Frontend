@@ -18,6 +18,13 @@
     animation: hideHomePanel 1s forwards;
 }
 
+.mood-form {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 @keyframes hideHomePanel {
 
     100% { opacity: 0;}
@@ -38,4 +45,12 @@
 .diary-link:hover {
 
     color: #bbded6;
+}
+
+.write-to-diary {
+
+    font-size: 0.8em;
+    text-align: center;
+    width: 100%;
+    display: block;
 }

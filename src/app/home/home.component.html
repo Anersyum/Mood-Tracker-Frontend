@@ -1,15 +1,16 @@
 <div class="mood-container">
   <h1>
     <span *ngIf="!this.hasMoodBeenSelected">What's your mood</span>
-    <span *ngIf="this.hasMoodBeenSelected">Why are you feeling {{ this.moodModel.moodName }}? You could write it in your 
+    <span class="write-to-diary" *ngIf="this.hasMoodBeenSelected">Why are you feeling {{ this.moodModel.moodName }}? You could write it in your 
       <a class="diary-link" (click)="goToDiarySection()">diary</a>.</span>
   </h1>
   <div class="mood-buttons-container" [ngClass]="{'hide-initial-mood-selection-home': this.hasMoodBeenSelected}">
-      <form (ngSubmit)="saveMood()" #moodForm="ngForm">
+      <form (ngSubmit)="saveMood()" #moodForm="ngForm" class="mood-form">
         <input [disabled]="submitted" list="mood-input" placeholder="Search moods" name="moodName" [(ngModel)]="moodModel.moodName">
         <datalist id="mood-input">
           <option *ngFor="let mood of moodsList" value="{{ mood.moodName | titlecase }}">
         </datalist>
+        <button type="submit">Submit</button>
       </form>
   </div>
 </div>
