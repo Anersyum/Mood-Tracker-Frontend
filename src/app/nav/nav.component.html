@@ -24,7 +24,7 @@
     <li *ngIf="isLoggedIn()" class="navigation-username show-on-desktop">
       Welcome back {{ getLoggedInUsername() | titlecase }}!
       <div class="profile-image" (click)="dropdownMenu()">
-        <img class="profile-image" [src]="userService.userProfileImage" alt="">
+        <img class="profile-image" [src]="userService.userProfileImage" alt="profile-image">
         <div [ngClass]="{'dropdown': this.dropdown, 'hidden': !this.dropdown}">
           <ul>
             <li>

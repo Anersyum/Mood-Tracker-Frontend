@@ -1,6 +1,6 @@
 <form class="profile-form-container" (ngSubmit)="onSubmit(profileForm)" #profileForm #editProfileForm="ngForm" enctype="multipart/form-data">
   <div class="profile-image-container">
-    <img class="profile-image" [src]="profileImagePath"> 
+    <img class="profile-image" [src]="profileImagePath" alt="profile-image"> 
     <div class="file-upload-button-container">
       <label for="file-upload" class="file-upload-btn">Upload</label>
       <label #fileName for="file-upload" class="file-name"></label>

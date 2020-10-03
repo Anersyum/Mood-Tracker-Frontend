@@ -4,14 +4,14 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { User } from '../_models/User';
-import { NgForm } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  baseUrl = 'http://localhost:5200/api/users/';
+  baseUrl = environment.apiUrl + 'users/';
   userProfileImage: string;
   approvedImageTypes = ['jpg', 'jpeg', 'png'];
 

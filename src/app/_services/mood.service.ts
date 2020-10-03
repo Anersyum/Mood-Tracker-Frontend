@@ -6,6 +6,7 @@ import { UserMood } from '../_models/UserMood';
 import { Observable } from 'rxjs';
 import { MoodStatistic } from '../_models/MoodStatistic';
 import { Mood } from '../_models/Mood';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class MoodService {
 
   constructor(private http: HttpClient) { }
 
-  baseUrl = 'http://localhost:5200/api/mood/';
+  baseUrl = environment.apiUrl + 'mood/';
 
   saveMood(moodModel: UserMood): Observable<any> {
 

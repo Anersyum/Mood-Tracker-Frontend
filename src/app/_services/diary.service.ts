@@ -3,13 +3,14 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient } from '@angular/common/http';
 import { DiaryEntry } from '../_models/DiaryEntry';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DiaryService {
 
-  baseUrl = 'http://localhost:5200/api/diary/';
+  baseUrl = environment.apiUrl + 'diary/';
   jwtHelper = new JwtHelperService();
 
   constructor(private http: HttpClient) { }
