@@ -94,6 +94,7 @@
     top: 55px;
     border-radius: 10px;
     cursor: context-menu;
+    z-index: 1;
     animation: showDropdown 0.5s;
 }
 
@@ -220,7 +221,8 @@
     color: #ffffff;
     -webkit-tap-highlight-color: transparent;
     position: absolute;
-    right: 0px;
+    right: 15px;
+    padding: 0;
 }
 
 .profile-menu-container-shadow {

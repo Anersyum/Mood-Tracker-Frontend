@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ok } from 'assert';
+import { LoadingService } from '../_services/loading.service';
 
 @Component({
   selector: 'app-profile',
@@ -21,7 +22,7 @@ export class ProfileComponent implements OnInit {
   };
   profileImagePath: SafeUrl;
   constructor(private userService: UserService, private notificationService: DiaryNotificationService,
-              private router: Router, private sanitizer: DomSanitizer) { }
+              private router: Router, private sanitizer: DomSanitizer, private loadingService: LoadingService) { }
 
   ngOnInit() {
 
@@ -38,17 +39,21 @@ export class ProfileComponent implements OnInit {
 
   onSubmit(form: HTMLFormElement) {
 
+    this.loadingService.startLoad();
+
     this.userService.editUserInfo(form).subscribe((response: any) => {
 
       this.notificationService.notify('Edited profile successfully!');
       this.userService.setProfileImage();
       this.router.navigateByUrl('/mood');
+      this.loadingService.stopLoad();
     }, error => {
 
       console.error(error);
 
       const errorMessage = 'The profile couldn\'t be edited. Check your internet connection or contact the site administrator.'
       this.notificationService.notify(errorMessage, false);
+      this.loadingService.stopLoad();
     });
   }
 
